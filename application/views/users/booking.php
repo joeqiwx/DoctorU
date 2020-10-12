@@ -354,6 +354,7 @@
             
 </body>
 <script>
+    let bookingInfo = [dept:"", distance:"", languages:"", bookingDate:"", bookingTime:""];
     function changeColor() {
         var departmentBtn = document.getElementById("contiue-btn");
         departmentBtn.style.background = "#157EE6";
@@ -374,6 +375,7 @@
             if (choosed[i].checked == true){
                 hasChoosed = true;
                 var dptValue =document.getElementById("departmentChoose").value = choosed[i].value;
+                bookingInfo.dept = deptValue;
                 console.log(dptValue);
             }
         } 
