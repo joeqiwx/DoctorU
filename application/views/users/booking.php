@@ -2,8 +2,8 @@
 <!-- saved from url=(0057)https://deco3801-zelda.uqcloud.net/DoctorU/users/homePage -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title></title>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/booking.css">
+    <title> booking</title>
+    <link rel="stylesheet" href="css/booking.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fira+Code|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,44 +22,47 @@
         <li><a class="nav" href="<?php //echo base_url('chat'); ?>">Chat</a></li>
         <li><a class="nav" href="<?php //echo base_url('user_calendar')?>">Treatment Plan</a></li>
         <li><a class="nav" href="<?php //echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
-        <li><a class="nav" href="<?php //echo base_url('Booking'); ?>">Booking</a></li>
-        <li><a class="active" href="#">Home</a></li>
+        <li><a class="active" href="<?php //echo base_url('Booking'); ?>">Booking</a></li>
+        <li><a class="nav" href="#">Home</a></li>
     </ul>
-    <div class="breadcrumbs">
-            <ul>
-                <li class="title-1" id="title-1">
-                    <div class="subtitle">
-                    <div class="rectangle">
-                        <p>Department</p>
-                    </div>
-                    <div class="triangle"></div>
+    <div class="progress-bar" id="progress-bar">
+
+        <div class="title-1" id="title-1">
+            <div class="subtitle">
+                <div class="rectangle">
+                    <p>Department</p>
                 </div>
-                </li>
-                <li class="title-2" id="title-2" style="display:none" >
-                    <div class="subtitle">
-                        <div class="rectangle">
-                            <p>Distance&Language</p>
-                        </div>
-                        <div class="triangle"></div>
-                    </div>
-                </li>
-                <li class="title-3" id="title-3"style="display:none" >
-                        <div class="subtitle">
-                    <div class="rectangle">
-                            <p>Date&time</p>
-                    </div>
-                    <div class="triangle"></div>
-                    </div>
-                </li>
-                <li class="title-4" id="title-4"style="display:none" >
-                        <div class="subtitle">
-                    <div class="rectangle">
-                            <p>Doctor</p>
-                    </div>
-                    <div class="triangle"></div>
-                    </div>
-                </li>
-            </ul>
+                <div class="triangle-right"></div>
+            </div>
+        </div>
+        <div class="title-2" id="title-2" style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                <div class="rectangle">
+                    <p>Distance&Language</p>
+                </div>
+                <div class="triangle-right"></div>
+            </div>
+        </div>
+        <div class="title-3" id="title-3"style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                <div class="rectangle">
+                    <p>Date&time</p>
+                </div>
+                <div class="triangle-right"></div>
+            </div>
+        </div>
+        <div class="title-4" id="title-4"style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                 <div class="rectangle">
+                    <p>Doctor</p>
+                </div>
+                
+             </div>
+        </div>
+
     </div>
     <div class="main">
         <div class="department-page"id="department-page"  >
@@ -69,39 +72,39 @@
                     <div class="index">A</div>
                     <input type="radio" name="department" class="department" value="Anesthetics" onclick = changeColor()>Anesthetics </br>
                     <div class="index">B</div>
-                    <input type="radio" name="department" class="department" value="Breast Screen">Breast Screen </br>
+                    <input type="radio" name="department" class="department" value="Breast Screen" onclick = changeColor()>Breast Screen </br>
                     <div class="index">C</div>
-                    <input type="radio" name="department" class="department" value="Cardiology">Cardiology </br>
+                    <input type="radio" name="department" class="department" value="Cardiology"  onclick = changeColor()>Cardiology </br>
                     <div class="index">E</div>
-                    <input type="radio" name="department" class="department" value="Ear,nose and throat(ENT)">Ear,nose and throat(ENT) </br>
-                    <input type="radio" name="department" class="department" value="Elderly services department">Elderly services department </br>
+                    <input type="radio" name="department" class="department" value="Ear,nose and throat(ENT)" onclick = changeColor()>Ear,nose and throat(ENT) </br>
+                    <input type="radio" name="department" class="department" value="Elderly services department" onclick = changeColor()>Elderly services department </br>
                     <div class="index">G</div>
-                    <input type="radio" name="department"class="department" value="Gastroenterology">Gastroenterology</br>
-                    <input type="radio" name="department"class="department" value="General Surgery">General Surgery </br>
-                    <input type="radio" name="department"class="department" value="Gynrcology">Gynrcology </br>
+                    <input type="radio" name="department"class="department" value="Gastroenterology" onclick = changeColor()>Gastroenterology</br>
+                    <input type="radio" name="department"class="department" value="General Surgery" onclick = changeColor()>General Surgery </br>
+                    <input type="radio" name="department"class="department" value="Gynrcology" onclick = changeColor()>Gynrcology </br>
                 </div>
                 <div class="column">
                     <div class="index">H</div>
-                    <input type="radio" name="department" class="department" value="Hematology">Hematology </br>
+                    <input type="radio" name="department" class="department" value="Hematology" onclick = changeColor()>Hematology </br>
                     <div class="index">N</div>
-                    <input type="radio" name="department" class="department" value="Neonatal Unit">Neonatal Unit </br>
-                    <input type="radio" name="department" class="department" value="Neurology">Neurology </br>
-                    <input type="radio" name="department" class="department" value="Nurtrition and dietetics">Nurtrition and dietetics </br>
+                    <input type="radio" name="department" class="department" value="Neonatal Unit" onclick = changeColor()>Neonatal Unit </br>
+                    <input type="radio" name="department" class="department" value="Neurology" onclick = changeColor()>Neurology </br>
+                    <input type="radio" name="department" class="department" value="Nurtrition and dietetics" onclick = changeColor()>Nurtrition and dietetics </br>
                     <div class="index">O</div>
-                    <input type="radio" name="department" class="department" value="Obstetrics and gynaecology units">Obstetrics and gynaecology units </br>
-                    <input type="radio" name="department" class="department" value="Oncology">Oncology </br>
-                    <input type="radio" name="department" class="department" value="Ophthalmology">Ophthalmology </br>
-                    <input type="radio" name="department" class="department" value="Orthopedics">Orthopedics </br>
+                    <input type="radio" name="department" class="department" value="Obstetrics and gynaecology units" onclick = changeColor()>Obstetrics and gynaecology units </br>
+                    <input type="radio" name="department" class="department" value="Oncology" onclick = changeColor()>Oncology </br>
+                    <input type="radio" name="department" class="department" value="Ophthalmology" onclick = changeColor()>Ophthalmology </br>
+                    <input type="radio" name="department" class="department" value="Orthopedics" onclick = changeColor()>Orthopedics </br>
                     <div class="index">P</div>
-                    <input type="radio" name="department" class="department" value="Physiotherapy">Physiotherapy</br>
+                    <input type="radio" name="department" class="department" value="Physiotherapy" onclick = changeColor()>Physiotherapy</br>
                 </div>
                 <div class="column">
                     <div class="index">R</div>
-                    <input type="radio" name="department" class="department" value="Renal Unit">Renal Unit </br>
+                    <input type="radio" name="department" class="department" value="Renal Unit" onclick = changeColor()>Renal Unit </br>
                     <div class="index">S</div>
-                    <input type="radio" name="department" class="department" value="Sexual Health">Sexual Health </br>
+                    <input type="radio" name="department" class="department" value="Sexual Health" onclick = changeColor()>Sexual Health </br>
                     <div class="index">U</div>
-                    <input type="radio" name="department" class="department" value="Urology">Urology </br>
+                    <input type="radio" name="department" class="department" value="Urology" onclick = changeColor()>Urology </br>
                     <button onclick="departContinue()" id="contiue-btn"> Continue</button>
                 </div>
                 
@@ -128,74 +131,89 @@
                         <div class="language-title" id="languageChoose" value=""> Please choose the doctor’s language(s):</div>
                         <div class="language-column">
                             <div class="column">
-                                <input type="checkbox" name="english" class ="language" value="English">English</br>
-                                <input type="checkbox" name="mandarin" class ="language" value="Mandarin">Mandarin</br>
-                                <input type="checkbox" name="cantonese" class ="language" value="Cantonese">Cantonese</br>
-                                <input type="checkbox" name="arabic" class ="language" value="Arabic">Arabic</br>
-                                <input type="checkbox" name="vietnamese" class ="language" value="Vietnamese">Vietnamese</br>
-                                <input type="checkbox" name="italian" class ="language" value="Italian">Italian</br>
-                                <input type="checkbox" name="greek " class ="language" value="Greek">Greek </br>
+                                <input type="checkbox" name="english" class ="language" value="English" onclick = changeLanguageBtn()>English</br>
+                                <input type="checkbox" name="mandarin" class ="language" value="Mandarin" onclick = changeLanguageBtn()>Mandarin</br>
+                                <input type="checkbox" name="cantonese" class ="language" value="Cantonese" onclick = changeLanguageBtn()>Cantonese</br>
+                                <input type="checkbox" name="arabic" class ="language" value="Arabic" onclick = changeLanguageBtn()>Arabic</br>
+                                <input type="checkbox" name="vietnamese" class ="language" value="Vietnamese" onclick = changeLanguageBtn()>Vietnamese</br>
+                                <input type="checkbox" name="italian" class ="language" value="Italian" onclick = changeLanguageBtn()>Italian</br>
+                                <input type="checkbox" name="greek " class ="language" value="Greek" onclick = changeLanguageBtn()>Greek </br>
 
                             </div>
                             <div class="column">
-                                    <input type="checkbox" name="korean" class ="language" value="Korean">Korean</br>
-                                    <input type="checkbox" name="japanese" class ="language" value="Japanese">Japanese</br>
-                                    <input type="checkbox" name="punjabi" class ="language" value="Punjabi">Punjabi</br>
-                                    <input type="checkbox" name="french" class ="language" value="French">French</br>
-                                    <input type="checkbox" name="hindi" class ="language" value="Hindi">Hindi</br>
-                                    <input type="checkbox" name="spanish" class ="language" value="Spanish">Spanish</br>
-                                    <input type="checkbox" name="german" class ="language" value="German">German </br>
+                                    <input type="checkbox" name="korean" class ="language" value="Korean" onclick = changeLanguageBtn()>Korean</br>
+                                    <input type="checkbox" name="japanese" class ="language" value="Japanese" onclick = changeLanguageBtn()>Japanese</br>
+                                    <input type="checkbox" name="punjabi" class ="language" value="Punjabi" onclick = changeLanguageBtn()>Punjabi</br>
+                                    <input type="checkbox" name="french" class ="language" value="French" onclick = changeLanguageBtn()>French</br>
+                                    <input type="checkbox" name="hindi" class ="language" value="Hindi" onclick = changeLanguageBtn()>Hindi</br>
+                                    <input type="checkbox" name="spanish" class ="language" value="Spanish" onclick = changeLanguageBtn()>Spanish</br>
+                                    <input type="checkbox" name="german" class ="language" value="German" onclick = changeLanguageBtn()>German </br>
+                                    
                             </div>
                         </div>
                     </div>
             </div>
             <div class="ld-btn">
                 <button onclick="dllastContinue()" id="d-btn"> Last-step</button>
-                <button onclick="dlContinue()" id="l-btn"> Continue</button>
+                <button onclick="dlContinue()" id="l-btn" > Continue</button>
             </div>
         </div>
         <div class="date-time-page" id="date-time-page" style="display:none" >
             <div class="date-time-content">
                 <div class="date-column">
                     <div class="date-title" id="dateChoose" value="" > Please choose the appointment date:</div>
-                    <div id="date">
-                        <select name="select-date" class="select-date-time" id="dateSelect" onmousedown="if(this.options.length>7){this.size=8}" 
-                            onblur="this.size=0" onchange="this.size=0">
-                         <option value="Oct-6">Oct-6</option>
-                         <option value="Oct-7">Oct-7</option>
-                         <option value="Oct-8">Oct-8</option>
-                         <option value="Oct-9">Oct-9</option>
-                         <option value="Oct-10">Oct-10</option>
-                         <option value="Oct-11">Oct-11</option>
-                         <option value="Oct-12">Oct-12</option>
-                         <option value="Oct-13">Oct-13</option>
-                         <option value="Oct-14">Oct-14</option>
-                         <option value="Oct-15">Oct-15</option>
-                         <option value="Oct-16">Oct-16</option>
-                         <option value="Oct-17">Oct-17</option>
-                         <option value="Oct-18">Oct-18</option>
-                         <option value="Oct-19">Oct-19</option>
-                        </select>
+                    <div id="date-column"  class="select-date-time">
+                        <div class="date-subtitle">Date:</div>
+                        <!-- <select name="select-date" class="select-date-time" id="dateSelect" onmousedown="if(this.options.length>7){this.size=8}" 
+                            onblur="this.size=0" onchange="this.size=0"> -->
+                        <div id="date">
+                            <div class="date-left">
+                            <input type="radio" name="date" value="today">Oct-6</br>
+                            <input type="radio" name="date" value="plus1">Oct-7</br>
+                            <input type="radio" name="date" value="plus2">Oct-8</br>
+                            <input type="radio" name="date" value="plus3">Oct-9</br>
+                            <input type="radio" name="date" value="plus4">Oct-10</br>
+                            <input type="radio" name="date" value="plus5">Oct-11</br>
+                            <input type="radio" name="date" value="plus6">Oct-12</br>
+                            </div>
+                            <div class="date-right">
+                            <input type="radio" name="date" value="plus7">Oct-13</br>
+                            <input type="radio" name="date" value="plus8">Oct-14</br>
+                            <input type="radio" name="date" value="plus9">Oct-15</br>
+                            <input type="radio" name="date" value="plus10">Oct-16</br>
+                            <input type="radio" name="date" value="plus11">Oct-17</br>
+                            <input type="radio" name="date" value="plus12">Oct-18</br>
+                            <input type="radio" name="date" value="plus13">Oct-19</br>
+                            </div>
+                        </div>
                     </div> 
                     <button onclick="dtlastContinue()" id="date-btn"> Last-step</button>
                 </div>  
                 <div class="time-column">
                     <div class="time-title" id="timeChoose" value=""> Please choose the appointment time:</div>
-                    <div id="time">
-                        <select name="select-time" class="select-date-time" id="timeSelect" onmousedown="if(this.options.length>7){this.size=8}" 
-                            onblur="this.size=0" onchange="this.size=0">
-                         <option value="9:00 - 9.30">9:00 - 9.30</option>
-                         <option value="9:30 - 10:00">9:30 - 10:00</option>
-                         <option value="10:00 - 10.30">10:00 - 10.30</option>
-                         <option value="10:30 - 11:00">10:30 - 11:00</option>
-                         <option value="11:00 - 11.30">11:00 - 11.30</option>
-                         <option value="13:00 - 13:30">13:00 - 13:30</option>
-                         <option value="13:30 - 14:00">13:30 - 14:00</option>
-                         <option value="14:00 - 14:30">14:00 - 14:30</option>
-                         <option value="14:30 - 15:00">14:30 - 15:00</option>
-                         <option value="15:00 - 15:30">15:00 - 15:30</option>
-                         <option value="15:30 - 16:00">15:30 - 16:00</option>
-                        </select>
+                    <div id="time-column" class="timeSelect">
+                        <!-- <select name="select-time" class="select-date-time" id="timeSelect" onmousedown="if(this.options.length>7){this.size=8}" 
+                            onblur="this.size=0" onchange="this.size=0"> -->
+                        <div class="time-subtitle">Time:</div>
+                        <div id="time">
+                            <div class= time-left>
+                                <div class="am">AM</div>
+                                <input type="radio" name="time" value="9:00 - 9.30" onclick = changeTimeBtn() >9:00 - 9.30</br>
+                                <input type="radio" name="time" value="9:30 - 10:00" onclick = changeTimeBtn() >9:30 - 10:00</br>
+                                <input type="radio" name="time" value="10:00 - 10.30" onclick = changeTimeBtn()>10:00 - 10.30</br>
+                                <input type="radio" name="time" value="10:30 - 11:00" onclick = changeTimeBtn()>10:30 - 11:00</br>
+                                <input type="radio" name="time" value="11:00 - 11.30" onclick = changeTimeBtn()>11:00 - 11.30</br>
+                            </div>
+                            <div class="time-right">
+                                <div class="pm">PM</div>
+                                <input type="radio" name="time" value="13:00 - 13:30" onclick = changeTimeBtn()>13:00 - 13:30</br>
+                                <input type="radio" name="time" value="13:30 - 14:00" onclick = changeTimeBtn()>13:30 - 14:00</br>
+                                <input type="radio" name="time" value="14:00 - 14:30" onclick = changeTimeBtn()>14:00 - 14:30</br>
+                                <input type="radio" name="time" value="14:30 - 15:00" onclick = changeTimeBtn()>14:30 - 15:00</br>
+                                <input type="radio" name="time" value="15:00 - 15:30" onclick = changeTimeBtn()>15:00 - 15:30</br>
+                                <input type="radio" name="time" value="15:30 - 16:00" onclick = changeTimeBtn()>15:30 - 16:00</br>
+                            </div>
+                    </div>
                     </div> 
                     <button onclick="dtContinue()" id="time-btn"> Continue</button>
                 </div>  
@@ -307,15 +325,46 @@
                 </div>
         </div>
     </div>
-    
+    <div class="check-page" id="check-page" style="display:none">
+        <div class="check">
+            <div class="check-title"> Please check and confirm your booking information:</div>
+            <div class="check-info">
+                <div> Visiting Person: Amy</div>
+                <div> Hospital : XXX</div>
+                <div> Doctor : Ben</div>
+                <div> Department : Cardiology</div>
+                <div> Treatment Time : Oct 06 2020, 10:00 A.M.</div>
+            </div>
+            <div class="check-btn">
+                    <button onclick="checkLast()" id="check-last-btn"> Last-step</button>
+                    <button onclick="checkConfirm()" id="check-confirm-btn"> Confirm</button>
+            </div>
+        </div>
+    </div>
+    <div id="popLayer" style="display:none;">
+            <!-- content of the windows -->
+        <div class="pop-title">Success</div>
+        <div class="pop-content">Your booking has been confirmed.</div>
+        <div class="pop-content">Check your email for details.</div>
+
+        <button id="ok-btn" onclick="closeWindows()">OK </button>
     </div>
 </div>
+
             
 </body>
 <script>
     function changeColor() {
-        var buttonColor = document.getElementById("contiue-btn");
-        buttonColor.style.background = "red";
+        var departmentBtn = document.getElementById("contiue-btn");
+        departmentBtn.style.background = "#157EE6";
+    }
+    function changeLanguageBtn() {
+        var languageBtn = document.getElementById("l-btn");
+        languageBtn.style.background = "#157EE6";
+    }
+    function changeTimeBtn() {
+        var timeBtn = document.getElementById("time-btn");
+        timeBtn.style.background = "#157EE6";
     }
     function departContinue(){
         var choosed = document.getElementsByClassName("department");
@@ -376,10 +425,10 @@
         document.getElementById("distance-language-page").style.display="none";
     }
     function dtContinue(){        
-        var dateValue = document.getElementById("dateChoose").value = document.getElementById("dateSelect").value;
-        var timeValue = document.getElementById("timeChoose").value = document.getElementById("timeSelect").value;
-        console.log(dateValue);
-        console.log(timeValue);
+        // var dateValue = document.getElementById("dateChoose").value = document.getElementById("dateSelect").value;
+        // var timeValue = document.getElementById("timeChoose").value = document.getElementById("timeSelect").value;
+        // console.log(dateValue);
+        // console.log(timeValue);
         document.getElementById("title-4").style.display="block";
         document.getElementById("doctor-page").style.display="block";
         document.getElementById("title-3").style.display="none";
@@ -397,11 +446,29 @@
         document.getElementById("title-4").style.display="none";
         document.getElementById("doctor-page").style.display="none";
     }
+    function doctorContinue(){
+        document.getElementById("progress-bar").style.display="none";
+        document.getElementById("doctor-page").style.display="none";
+        document.getElementById("check-page").style.display="block";
+    }
+    function checkLast(){
+        document.getElementById("progress-bar").style.display="block";
+        document.getElementById("doctor-page").style.display="block";
+        document.getElementById("check-page").style.display="none";
+    } 
 
+    function checkConfirm() {
+        var popLayer = document.getElementById("popLayer"); // display the content
+        popLayer.style.display = "block";
+    };
+
+    function closeWindows() {
+        var popLayer = document.getElementById("popLayer");
+        popLayer.style.display = "none";
+    }
 	function myFunction() {
 	  document.getElementById("myDropdown").classList.toggle("show");
 	}
-
 	window.onclick = function(event) {
 	  if (!event.target.matches('.dropbtn')) {
 		var dropdowns = document.getElementsByClassName("dropdown-content");
