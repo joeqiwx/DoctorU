@@ -1,0 +1,434 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: white;
+    text-decoration: none;
+}
+
+/*
+navigation bar
+*/
+li
+{
+   float: right;
+}
+
+ul {
+    list-style-type: none;
+    margin: 6vh 6vw;
+    padding: 0;
+}
+
+li a {
+    display: inline;
+    color: #157EE6;
+    text-align: center;
+    padding: 0px 20px;
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+li a:hover {
+    color: #EF8354;
+    transition: 0.3s;
+}
+
+.active {
+    color: #EF8354;
+    text-decoration: underline;
+}
+
+button {
+    float: right;
+    background-color: #157EE6; 
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    margin-left: 3vw;
+    margin-top: -1vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.blocks {
+    position: relative;
+    width: 30%;
+    left: 55vw;
+    top: 10vh;
+}
+
+.function {
+    float: left;
+    background-color: #157EE6; 
+    width: 25vw;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border: none;
+    color: white;
+    padding: 35px 52px 25px 35px;
+    margin: 2vh 0;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 10px 10px rgba(204, 202, 202, 0.692);
+}
+
+.fas {
+    float: left;
+    padding-right: 3vw;
+    padding-top: 1vh;
+    font-size: 40px;
+}
+
+.blocks p {
+    float: left;
+}
+
+img {
+    width: 45%;
+    position: relative;
+    left: -25vw;
+    top: 10vh;
+}
+
+.intro-container {
+    display: block;
+    position: relative;
+    left: 8vw;
+    top: 20vh;
+    width: 25%;
+    padding: 160px 30px;
+    background-color: rgba(230, 220, 220, 0.671);
+    font-size: 30px;
+    text-align:center;
+}
+
+.check {
+    position: absolute;
+    left: 13vw;
+    margin-top: 25vh;
+    
+}
+
+.check button {
+    font-size: 20px;
+    padding: 10px 30px;
+    box-shadow: 5px 5px rgba(156, 154, 154, 0.548);
+}
+
+.honey {
+    position: relative;
+    left: 78vw;
+    top: -31vh;
+    text-align: center;
+}
+
+img.one, img.two, img.three, img.four, img.five, img.six, img.seven {
+    position: absolute;
+    width: 13%;
+}
+img.one{
+    margin-top: 6vh;
+}
+img.two{
+    top: -8vh;
+}
+img.three{
+    margin-top: 30vh;
+}
+img.four{
+    margin-top: -5vh;
+    left: -35vw;
+}
+img.five{
+    margin-top: 19vh;
+    left: -35vw;
+}
+img.six{
+    margin-top: 19vh;
+    left: -15vw;
+}
+img.seven{
+    margin-top: -5vh;
+    left: -15vw;
+}
+
+.dia {
+    left: 96vw;
+    top: -70vh;
+    position: relative;
+    width: 45%;
+}
+
+.dia img {
+    position: absolute;
+    top: 52vh;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.dropdown a:hover {background-color: #ddd;}
+  
+.show {display: block;}
+
+/* 
+ * Symptom checker
+ */
+ 
+.breadcrumbs {
+  display: flex;
+  top: 5vh;
+  height: 20vh;
+  left: 30%;
+  text-align: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs ul li {
+  list-style: none;
+  float: left;
+  height: 28px;
+}
+
+.title-1 {
+  display: block;
+  float: left;
+  background: #157EE6;
+  text-align: center;
+  padding: 7px 40px 6px 40px;
+  position: relative;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.title-1 p:after {
+  content: "";
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #157EE6;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 1;
+}
+
+.title-2 {
+  display: block;
+  float: left;
+  background: white;
+  text-align: center;
+  padding: 7px 40px 6px 40px;
+  position: relative;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.title-2 p:after {
+  content: "";
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid white;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 1;
+}
+
+.title-3 {
+  display: block;
+  float: left;
+  background: white;
+  text-align: center;
+  padding: 7px 40px 6px 40px;
+  position: relative;
+  margin: 0 10px 0 0;
+  /* font-size: 20px; */
+  text-decoration: none;
+  color: #fff;
+}
+
+.title-3 p:after {
+  content: "";
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid white;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 1;
+}
+.breadcrumbs ul{
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.breadcrumbs ul li p:before {
+  content: "";
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid white;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* .breadcrumbs ul li:first-child p:before {
+  display: none;
+}
+
+.breadcrumbs ul li:last-child p:after {
+  display: none;
+} */
+
+.main {
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  left: 25%;
+  width: 50%;
+  border-radius: 0.2rem;
+  box-shadow: 5px 5px 5px #999;
+  background: #f7f7f7;
+  padding: 3rem 1rem;
+}
+.information{
+  height: 400px;
+}
+.section {
+	width: 75%;
+	margin: auto;
+	padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.heading {
+	font-size: 1.25rem; 
+	color: #3f6382; 
+	padding-bottom: 0.1rem;
+}
+
+.options {
+	height: 3rem;
+	margin-top: 2px;
+	margin-bottom: 5px;
+	width: 100%;
+    font-size: 1rem;
+    border-radius:0.5rem;
+    background: white;
+    padding-left: 0.5rem; 
+	color: grey;
+}
+
+.next-btn {
+	position: relative;
+	right: 37.5%;
+	box-shadow: 5px 5px 5px #999;
+	margin: 0;
+}
+
+.left-checkboxes {
+	display: inline-block;
+	position: relative;
+	width: 50%;
+}
+
+.left-checkboxes input {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.left-checkboxes label {
+	padding-left: 0.5rem;
+	font-size: 1.25rem; 
+	color: grey;
+}
+
+.right-checkboxes {
+	display: inline-block;
+	position: relative;
+	float: right;
+	width: 50%;
+}
+
+.right-checkboxes input {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.right-checkboxes label {
+	padding-left: 0.5rem;
+	font-size: 1.25rem; 
+	color: grey;
+}
+
+.causes button {
+	position: relative;
+	background-color: #e8effa;
+	color: #595959;
+	float: none;
+	font-size: 2rem;
+}
+
+.description-heading {
+	color: #595959;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.description-title {
+	font-weight: bold;
+	
+}
+
+.description-section {
+	color: #595959;
+	font-size: 20px;
+	padding-top: 10px;
+}
+
+.description-btn-section {
+	padding-top: 20px;
+	display: flex;
+}
+
+.restart-btn {
+	padding-top: 10px;
+	position: relative;
+	right: 6%;
+}
+
+.chat-btn {
+	padding-top: 10px;
+	position: relative;
+	left: 50%;
+}

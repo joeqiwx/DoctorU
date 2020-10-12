@@ -1,0 +1,44 @@
+body{ font-family:Arial, Helvetica, sans-serif; font-size:14px;  color:#212121; position: relative;}
+li{ list-style:none;}
+ul{ padding:0; margin:0;}
+a{ color:#444;text-decoration:none}
+a:hover{ text-decoration:none !important; color: #272d5a;}
+a:focus{ text-decoration:none !important; outline: none !important;}
+button:focus,button:hover{outline: none !important;}
+ul,ol{ margin:0; padding:0; }
+img{ max-width:100%;}
+input,button {outline:none;}
+.login-back{ background: url(../images/login-back.png) center no-repeat; background-size: cover; position: fixed; z-index: -1; left: 0; right: 0; top: 0; bottom: 0; }
+.login{ margin-left: 4.5%; margin-top: 2.5%; width: 2.07rem;}
+.login img{ width: 100%; }
+.login-left{ margin-left: 0.47rem; width: 42%; position: fixed; left: 0; top: 50%; margin-top: -2rem; }
+.login-left img{ width: 100%; }
+.login-right{ margin-right: 12.5%; width: 25.5%; position: fixed; right: 0; top: 50%; margin-top: -2.36rem;}
+.login-box{ border-radius: 0.2rem; box-shadow: 0 0 10px #8ca8cd; background: #f7f7f7; padding:5% 13%; }
+.login-txt{ font-size: 0.24rem; color: #505676; }
+.content-txt{ font-size: 0.3rem; text-align: center; padding: 1.25rem 0rem;}
+.form-control{ height: 0.56rem; margin-bottom: 5px; box-shadow: none; font-size: 0.18rem; padding-left: 0.64rem; border-radius: 0.1rem; }
+.icon01{ background: #fff url(../images/icon01.png) 0.12rem center no-repeat; background-size: 0.32rem auto; }
+.icon02{ background: #fff url(../images/icon02.png) 0.12rem center no-repeat; background-size: 0.32rem auto; }
+.icon03{ background: #fff url(../images/icon03.png) 0.12rem center no-repeat; background-size: 0.32rem auto; }
+.btn-login{ width: 1.75rem; height: 0.64rem; line-height: 0.64rem; padding:0; border-radius: 0.15rem; margin-top: 0.2rem; background: #3677eb; font-size: 0.48rem; color: #fff; box-shadow: 5px 5px 5px #999; }
+.relative{ position: relative; }
+.look{ position: absolute; right: 0.16rem; top: 0; width: 0.32rem; height: 0.56rem; background: url(../images/look.png) center no-repeat; background-size: 100% auto; }
+.login-right-p{ font-size: 0.24rem; color: #666; margin:0.15rem 0; }
+.btn-login-b{ width: 2.52rem; height: 0.56rem; line-height: 0.56rem; font-size: 0.24rem; margin-top: 0; }
+.btn-login-b span{ padding-right: 0.7rem; display: inline-block; line-height: 0.56rem; background: url(../images/raw.png) right center no-repeat; background-size: 0.2rem auto; }
+.dropdown button{ width: 1.55rem; height: 0.6rem; line-height: 0.6rem; padding:0; border-radius: 0.15rem; border:none; background: #3677eb; font-size: 0.24rem; color: #fff; box-shadow: 5px 5px 5px #999; text-align: center;}
+.dropdown-menu > li > a{ width: 1.55rem; height: 0.6rem; line-height: 0.6rem; padding:0; border-radius: 0; border:none; background: #3677eb; font-size: 0.24rem; color: #fff; text-align: center;}
+.right-top{ margin-right: 4.5%; margin-top: 3.5%; }
+.dropdown-menu{ padding:0; box-shadow: none; margin-top:-0.15rem; padding-top: 0.15rem; background: none; min-width: 1px; border:none; background: #3677eb; }
+.btn-login:hover,.btn-login:focus{ color: #fff; }
+.link-txt a{ font-size: 0.18rem; color: #666; }
+.link-txt{ margin-top: 0.2rem; }
+#forget{
+    margin-left: 0.3rem;
+}
+.remember input{ width: 0.2rem; height: 0.2rem; }
+.text-primary{ font-size: 0.2rem; }
+.error_msg {
+    color:red;
+}
