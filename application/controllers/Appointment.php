@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Dcalendar extends  CI_Controller{
+class Appointment extends  CI_Controller{
 	public function __construct(){
 		parent:: __construct();
 		$this->load->database();
@@ -10,12 +10,12 @@ class Dcalendar extends  CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('users/dcalendar');
+		$this->load->view('users/appointment');
 	}
 
 	function load(){
 		$doctorName = $this->session->userdata['logged_in_doctor']['username'];
-		$event_data = $this->user_calendar_model->fetch_all_event($this->session->userdata($doctorName));
+		$event_data = $this->user_calendar_model->fetch_all_event($doctorName);
 		foreach ($event_data->result_array() as $event_row){
 			$data[] = array(
 				'id' => $event_row['id'],
@@ -34,7 +34,7 @@ class Dcalendar extends  CI_Controller{
 				'title' => $this->input->post('title'),
 				'start_event' => $this->input->post('start'),
 				'end_event' => $this->input->post('end'),
-				'user' =>  $this->session->userdata($doctorName)
+				'user' =>  $doctorName
 			);
 			$this->user_calendar_model->insert_event($data);
 		}

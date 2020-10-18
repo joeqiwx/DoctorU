@@ -35,7 +35,12 @@ class Dview extends CI_Controller {
   		';
 
 		if($data->num_rows() > 0) {
+			$doctorName = $this->session->userdata['logged_in_doctor']['username'];
 			foreach($data->result() as $row) {
+				$session_data = array(
+					'patientName' => $row->username
+				);
+				$this->session->set_userdata($doctorName, $row->username);
 				$output .= '
 		  <tr>
 			   <td><a href="'.

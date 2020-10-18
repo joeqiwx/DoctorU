@@ -1,3 +1,4 @@
+/* nav-bar */
 li
 {
    float: right;
@@ -8,8 +9,8 @@ ul {
     margin: 6vh 6vw;
     padding: 0;
 }
-/* nav-bar */
-.nav-ul li a {
+
+.nav{
     display: inline;
     color: #157EE6;
     text-align: center;
@@ -20,7 +21,7 @@ ul {
     font-weight: 400;
 }
 
-.nav-ul li a:hover {
+.nav:hover {
     color: #EF8354;
     transition: 0.3s;
 }
@@ -465,3 +466,4 @@ button {
     cursor: pointer;
     margin-right:130px;
 }
+

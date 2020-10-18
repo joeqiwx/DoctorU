@@ -52,7 +52,7 @@
         <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
         <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
         <li><a class="active" href="#">Diagnosis</a></li>
-        <li><a class="nav" href="#">Booking</a></li>
+        <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
         <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
     </ul>
     
@@ -103,35 +103,35 @@
 			<div class="left-checkboxes">
 				<input type="checkbox" id="choking" name="Choking" value="choking">
 				<label for="choking">choking</label><br>
-				<input type="checkbox" id="choking-sensation" name="Choking Sensation" value="choking-sensation">
+				<input type="checkbox" id="choking-sensation" name="ChokingSensation" value="choking-sensation">
 				<label for="choking-sensation">choking sensation</label><br>
-				<input type="checkbox" id="cough" name="Common Cold" value="Common Cold">
+				<input type="checkbox" id="cough" name="CommonCold" value="Common Cold">
 				<label for="cough">cough</label><br>
 				<input type="checkbox" id="epiglottis" name="Epiglottis" value="epiglottis">
 				<label for="epiglottis">epiglottis</label><br>
 				<input type="checkbox" id="swelling" name="Swelling" value="swelling">
 				<label for="swelling">swelling</label><br>
-				<input type="checkbox" id="not-breathing-sleep" name="Not Breathing" value="not-breathing-sleep">
+				<input type="checkbox" id="not-breathing-sleep" name="NotBreathing" value="not-breathing-sleep">
 				<label for="not-breathing-sleep">episodes of not breathing during sleep</label><br>
-				<input type="checkbox" id="throwing-up" name="Throwing Up" value="throwing-up">
+				<input type="checkbox" id="throwing-up" name="ThrowingUp" value="throwing-up">
 				<label for="throwing-up">throwing up</label><br>
 			</div>
 			<div class="right-checkboxes">
-				<input type="checkbox" id="goes-down" name="Goes Down" value="goes-down">
+				<input type="checkbox" id="goes-down" name="GoesDown" value="goes-down">
 				<label for="goes-down">food or liquid goes down</label><br>
 				<input type="checkbox" id="pipe" name="Pipe" value="pipe">
 				<label for="pipe">wrong pipe high pitched</label><br>
-				<input type="checkbox" id="breathing" name="Hard Breathing" value="breathing">
+				<input type="checkbox" id="breathing" name="HardBreathing" value="breathing">
 				<label for="breathing">breathing</label><br>
-				<input type="checkbox" id="itchy-throat" name="Itchy Throat" value="itchy-throat">
+				<input type="checkbox" id="itchy-throat" name="ItchyThroat" value="itchy-throat">
 				<label for="itchy-throat">itchy throat</label><br>
 				<input type="checkbox" id="vein" name="Vein" value="vein">
 				<label for="vein">jugular vein a wave</label><br>
-				<input type="checkbox" id="laryngeal-pain" name="Laryngeal Pain" value="laryngeal-pain">
+				<input type="checkbox" id="laryngeal-pain" name="LaryngealPain" value="laryngeal-pain">
 				<label for="laryngeal-pain">increased laryngeal pain</label><br>
 			</div>
 			<div class="section">
-				<button type="submit" class="next-btn" id="next-btn" onclick="symptomsNext();" value="">Continue</button>
+				<button type="button" class="next-btn" id="next-btn" onclick="symptomsNext();" value="">Continue</button>
 			</div>
 		</form>
 
@@ -140,6 +140,10 @@
 		
 		<div class="description">
 			<p class="description-heading"></p>
+			<div class="description-section">
+				<p class="description-title"></p>
+				<p class="description-words"></p>
+			</div>
 			<div class="description-section">
 				<p class="description-title"></p>
 				<p class="description-words"></p>
@@ -283,6 +287,8 @@
 				button.innerHTML = symptoms[i].getAttribute('name') + " >";
 				button.onclick = function() {causesNext(symptoms[i])};
 				$('.causes').append(button);
+				console.log(symptoms[i].getAttribute('name'));
+				// window.location.href='<?php echo base_url('checker/result'); ?>/' + symptoms[i].getAttribute('name');
 				break;
 			}
 		}
@@ -296,14 +302,28 @@
 			$('.causes').remove();
 			$('.main').append(descriptionDiv);
 			
-			// Add information
-			$('.description-heading')[0].innerHTML = sym.getAttribute('name');
-			$('.description-title')[0].innerHTML = "Symptoms";
-			$('.description-words')[0].innerHTML = "Symptoms of a " + sym.getAttribute('name') + " may include throat pain and sensitivity, sneezing, runny or stuffy nose, low-grade fever, headache, muscle aches, cough, and tiredness.";
-			$('.description-title')[1].innerHTML = "How Common";
-			$('.description-words')[1].innerHTML = "Most teens and adults have two to four colds a year. Younger children can have as many as six to twelve colds a year.";
-			$('.description-title')[2].innerHTML = "Overview";
-			$('.description-words')[2].innerHTML = "The " + sym.getAttribute('name') + " is a short-lived viral infection of the upper respiratory tract, which includes the nose and sinuses, mouth, and throat. Symptoms may include sore throat, stuffy or runny nose, nasal drip, headache, and slight muscle aches. Because more than 200 viruses cause colds, and new ones develop all the time, the body can't build immmunity to colds. Cold spread easily from person to person and are the most common illness in the world. Most colds go away within a few days and don't cause serious health problems.";
+			$.ajax({
+				type: 'ajax',
+				url: '<?php echo base_url() ?>checker/result/' + sym.getAttribute('name'),
+				async: false,
+				dataType: 'json',
+				success: function(data){
+					// Add information
+					$('.description-heading')[0].innerHTML = data[0].title;
+					$('.description-title')[0].innerHTML = "Symptoms";
+					$('.description-words')[0].innerHTML = data[0].content;
+					$('.description-title')[1].innerHTML = "How Common";
+					$('.description-words')[1].innerHTML = data[0].content;
+					$('.description-title')[2].innerHTML = "Overview";
+					$('.description-words')[2].innerHTML = data[0].content;
+					$('.description-title')[3].innerHTML = "Source From";
+					$('.description-words')[3].innerHTML = data[0].reference;
+				},
+				error: function(xhr){
+					alert(xhr.responseText);
+					console.log(xhr.responseText);
+                    },
+                    });
 		} else if (document.getElementById("none") != null) {
 			// NO SYMPTOMS MATCH CONDITION
 			// remove div and add div

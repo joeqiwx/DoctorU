@@ -43,7 +43,7 @@
 			</div>
 			<!-- <div class="login-right-p text-center">Don't have account?</div> -->
 			<div class="text-center"><button type="button" class="btn btn-login"  onclick="window.location.href='<?php echo base_url('users/login'); ?>'">
-			<span>Login</span>
+			<span>Get started</span>
 			</button></div>
 		</div>
 	</div>

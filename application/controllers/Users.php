@@ -49,7 +49,7 @@ class Users extends CI_Controller {
                         $this->load->library('session');
                         // $this->session->set_userdata('logged_in', $session_data);
                         $this->session->set_userdata('logged_in_doctor', $session_data);
-                        $this->load->view('users/dview');
+                        $this->load->view('users/dhome');
                     } else {
                         //$this->load->library('session');
                        // $this->session->set_userdata('logged_in', $session_data);

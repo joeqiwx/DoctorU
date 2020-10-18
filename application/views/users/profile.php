@@ -31,7 +31,7 @@ if (isset($this->session->userdata['logged_in'])) {
         <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
         <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
         <li><a class="nav" href="<?php echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
-        <li><a class="nav" href="#">Booking</a></li>
+        <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
         <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
     </ul>
     <div class="profile-box">

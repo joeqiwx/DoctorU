@@ -34,11 +34,11 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         <?php }?>
     </figure>
         <ul>
-            <li><a class="left-nav" href="">Home</a></li>
-            <li><a class="active" href="">Profile</a></li>
-            <li><a class="left-nav" href="">Appointment</a></li>
-            <li><a class="left-nav" href="<?php echo base_url('Dview') ?>">Treatment plan</a></li>
-            <li><a class="left-nav" href="<?php echo base_url('welcome/index') ?>">Chat</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dhome') ?>">Home</a></li>
+            <li><a class="left-nav active" href="<?php echo base_url('Users/doctor_profile') ?>">Profile</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('appointment');?>">Appointment</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dview');?>">Treatment plan</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
         </ul>
     </div>
     <div class ="content">

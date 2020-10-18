@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,17 +143,18 @@ article{
 	<script>
 		$(document).ready(function(){
 			var calendar = $('#calendar').fullCalendar({
+                defaultView: 'listMonth',
                 height: 600,
                 contentHeight: 500,
                 aspectRatio: 0.5,
 				themeSystem: 'bootstrap4',
 				editable: true,
 				header:{
-					left:'prev,next day, today',
+					left:'',
 					center:'title',
-					right:'month,agendaWeek,agendaDay,listWeek'
+					right:''
 				},
-				events:"<?php echo base_url();?>dcalendar/load",
+				events:"<?php echo base_url();?>appointment/load",
 				selectable:true,
 				selectHelper:true,
 				select:function (start, end, allDay) {
@@ -161,7 +163,7 @@ article{
 						var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
 						var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
 						$.ajax({
-							url:"<?php echo base_url(); ?>dcalendar/insert",
+							url:"<?php echo base_url(); ?>appointment/insert",
 							type:"POST",
 							data:{title:title, start:start, end:end},
 							success: function () {
@@ -181,7 +183,7 @@ article{
 					var title = event.title;
 					var id = event.id;
 					$.ajax({
-						url: "<?php echo base_url(); ?>dcalendar/update",
+						url: "<?php echo base_url(); ?>appointment/update",
 						type: "POST",
 						data: {title: title, start: start, end: end, id: id},
 						success: function () {
@@ -197,7 +199,7 @@ article{
 					var title = event.title;
 					var id = event.id;
 					$.ajax({
-						url: "<?php echo base_url(); ?>dcalendar/update",
+						url: "<?php echo base_url(); ?>appointment/update",
 						type: "POST",
 						data: {title: title, start: start, end: end, id: id},
 						success: function () {
@@ -213,7 +215,7 @@ article{
 						if(confirm("Remove it?")){
 							var id = event.id;
 							$.ajax({
-								url:"<?php echo base_url(); ?>dcalendar/delete",
+								url:"<?php echo base_url(); ?>appointment/delete",
 								type:"POST",
 								data: {id:id},
 								success: function () {
@@ -233,7 +235,7 @@ article{
 <body>
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
-    <p class="title"><b>Joe's Treatment plan</p>
+    <p class="title"><b>Appointment</p>
     <button>ENG</button>
     </div>
     <article>
@@ -243,10 +245,10 @@ article{
         <p class="name"><?php echo $this->session->userdata['logged_in_doctor']['username']; ?></p>
     </figure>
         <ul>
-            <li><a class="left-nav" href="<?php echo base_url('dhome') ?>">Home</a></li>
+            <li><a class="left-nav active" href="">Home</a></li>
             <li><a class="left-nav" href="<?php echo base_url('Users/doctor_profile') ?>">Profile</a></li>
             <li><a class="left-nav" href="<?php echo base_url('appointment');?>">Appointment</a></li>
-            <li><a class="active" href="<?php echo base_url('dview');?>">Treatment plan</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dview');?>">Treatment plan</a></li>
             <li><a class="left-nav" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
 
         </ul>

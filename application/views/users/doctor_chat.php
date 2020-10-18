@@ -29,103 +29,57 @@
         <?php } ?>    
     </figure>
         <ul>
-            <li><a class="left-nav" href="">Home</a></li>
-            <li><a class="left-nav" href="<?php echo base_url('welcome/hello') ?>">Profile</a></li>
-            <li><a class="left-nav" href="">Appointment</a></li>
-            <li><a class="left-nav" href="<?php echo base_url('Dview') ?>">Treatment plan</a></li>
-            <li><a class="active" href="">Chat</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dhome') ?>">Home</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('Users/doctor_profile') ?>">Profile</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('appointment');?>">Appointment</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dview');?>">Treatment plan</a></li>
+            <li><a class="left-nav active" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
         </ul>
     </div>
     <div class ="main-content">
-            <div class="content">
-                    <div class="column-left">
-                        <div class="searchbox">
-                            <input type="text" name="search" placeholder="search contact" >
+        <div class="content">
+            <div class="column-left">
+                <div class="searchbox">
+                    <input type="text" name="search" placeholder="search contact" >
+                </div>
+                <div class="chat-namelist">
+                    <?php for($i = 0; $i < count($friends); $i++) {?>
+                        <div class="chat-person" onclick="window.location.href='<?php echo base_url('Dchat/haveChat/'.$user_id.'/'.$friends[$i]['friend_id']);?>'">
+                            <figure>
+                                <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
+                            </figure>
+                            <section class="chat-name">
+                                <h3><?php echo $friends[$i]['friend_name']?></h3>
+                                <blockquote> Patient </blockquote>
+                            </section>
                         </div>
-            
-                        <div class="chat-namelist">
-                            <div class="chat-person">
-                                <figure>
-                                    <img src="<?php echo base_url() ?>assets/images/amy.png"   alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                            <div class="chat-person">
-                                <figure>
-                                    <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                            <div class="chat-person">
-                                <figure>
-                                    <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                            <div class="chat-person">
-                                <figure>
-                                    <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                            <div class="chat-person">
-                                <figure>
-                                    <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                            <div class="chat-person">
-                                <figure>
-                                        <img src="<?php echo base_url() ?>assets/images/amy.png"  alt="chatperson">
-                                </figure>
-                                <section class="chat-name">
-                                    <h3>Amy</h3>
-                                    <blockquote> Dentist </blockquote> 
-                                </section>
-                            </div>
-                           
+                    <?php }?>
+                </div>  
+            </div>
+            <div class="column-right">
+                <div class="chat-box" id="showData">
+                    
+                    
+                </div>
+                <div class="chat-input">
+                    <form action="" id="myMessage" method="post">
+                        <div class ="phone-video">
+                            <img class = "phone" src="<?php echo base_url() ?>assets/images/phone.png" alt="phone">
+                            <a href="https://doctor-chitchat.herokuapp.com" target="_blank">
+                            <img class = "video" src="<?php echo base_url() ?>assets/images/video.png" alt="video">
+                            </a>
                         </div>
-                        
-                    </div>
-                    <div class="column-right">
-                        <div class="chat-box" id="showData">
-                            
-                            
+                        <div class="input-button">
+                            <textarea type="text" name="chat-input" placeholder="input content" ></textarea>
+                            <button id="btnSend" type="button">
+                                Send
+                                <img class = "send" src="<?php echo base_url() ?>assets/images/send.png" alt="send">
+                            </button>
                         </div>
-                        <div class="chat-input">
-                            <form action="" id="myMessage" method="post">
-                                <div class ="phone-video">
-                                    <img class = "phone" src="<?php echo base_url() ?>assets/images/phone.png" alt="phone">
-                                    <a href="https://doctor-chitchat.herokuapp.com" target="_blank">
-                                    <img class = "video" src="<?php echo base_url() ?>assets/images/video.png" alt="video">
-                                    </a>
-                                </div>
-                                <div class="input-button">
-                                    <textarea type="text" name="chat-input" placeholder="input content" ></textarea>
-                                    <button id="btnSend" type="button">
-                                        Send
-                                        <img class = "send" src="<?php echo base_url() ?>assets/images/send.png" alt="send">
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-            </div> 
+                    </form>
+                </div>
+            </div>
+        </div> 
     </div>
     <script>
             $(function(){
@@ -134,7 +88,8 @@
                     showAllMessage();
                 },2000);
                 $('#btnSend').click(function(){
-                    $('#myMessage').attr('action', '<?php echo base_url() ?>chat/addMessage/<?php echo $username; ?>');
+                    $('#myMessage').attr('action',
+                        '<?php echo base_url() ?>Dchat/addMessage/<?php echo $user_name.'/'.$patient_name.'/'.$user_id.'/'.$patient_id; ?>');
                     var url = $('#myMessage').attr('action');
                     var data = $('#myMessage').serialize();
                     //validate form
@@ -174,7 +129,8 @@
                 function showAllMessage(){
                     $.ajax({
                         type: 'ajax',
-                        url: '<?php echo base_url() ?>chat/showAllMessage',
+                        url: '<?php echo base_url() ?>Dchat/showAllMessage/<?php echo $user_id; ?>/<?php echo $patient_id; ?>',
+                        //url: '<?php //echo base_url() ?>//information/showAllMessage',
                         async: false,
                         dataType: 'json',
                         success: function(data){
@@ -185,7 +141,7 @@
                                 mess +='<div style="display:flex; flex-direction: column;">'+
                                     '<span style= "margin:0 auto; text-align:center; color:white; background-color:#B0C4DE;padding:3px 5px 3px 5px;border-radius:3px;font-size:12px;">'+ data[i].created_at + '</span>'+
                                     '<div style=" display:flex;margin:10px 0 0 0;">' +
-                                    '<div style=" font-size:13px;padding-top:10px; padding-left:10px; width:5%;">'+data[i].username+ ':' + '</div>'+
+                                    '<div style=" font-size:13px;padding-top:10px; padding-left:10px; width:5%;">'+ data[i].sender_name + ':' + '</div>'+
                                     '<div style = "background-color: #fff; padding: 5px 8px; display: inline-block;  border-radius: 4px; margin:5px 0 5px 0px;  position: relative;">'+data[i].message + '</div>'+'</div>'+
                                     '</div>';
                             }
@@ -194,7 +150,8 @@
                         error: function(xhr){
                             alert('Could not get Data from Database');
                             alert(xhr.responseText);
-                    },
+                            console.log(xhr.responseText);
+                        },
                     });
                 }
 

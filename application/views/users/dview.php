@@ -139,7 +139,7 @@ article{
     <?php if (isset($this->session->userdata['logged_in_doctor'])) {
         $username = ($this->session->userdata['logged_in_doctor']['username']);?>
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
-    <p class="title">Today is September 9, 2020.  Have a nice day, <b><?php echo $username?></p>
+    <p class="title">Today is <?php echo date('M-d')  ?>.  Have a nice day, <b><?php echo $username?></p>
     <button>ENG</button>
     </div>
     <article>
@@ -150,10 +150,10 @@ article{
         <?php } ?>    
     </figure>
         <ul>
-            <li><a class="left-nav" href="">Home</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('dhome') ?>">Home</a></li>
             <li><a class="left-nav" href="<?php echo base_url('Users/doctor_profile') ?>">Profile</a></li>
-            <li><a class="left-nav" href="">Appointment</a></li>
-            <li><a class="active" href="">Treatment plan</a></li>
+            <li><a class="left-nav" href="<?php echo base_url('appointment');?>">Appointment</a></li>
+            <li><a class="active" href="<?php echo base_url('dview');?>">Treatment plan</a></li>
             <li><a class="left-nav" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
         </ul>
     </div>

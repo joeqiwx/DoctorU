@@ -8,22 +8,29 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fira+Code|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <style>
+    #google_translate_element {
+        width: 5%;
+        
+    }
+    </style>
     </head>
 <body>
+<div id="google_translate_element"></div>
     <ul class="nav-ul">
         <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"> <i class="far fa-user"></i>&nbsp;abc</button>
+            <button onclick="myFunction()" class="dropbtn"> <i class="far fa-user"></i>&nbsp;<?php echo $this->session->userdata['logged_in']['username'];?></button>
             <div id="myDropdown" class="dropdown-content">
                 <a href="<?php echo base_url('users/profile'); ?>">Profile</a>
                 <a href="<?php echo base_url('users/logout'); ?>" id="logout">Logout</a>
             </div>
         </div>
         <li><a class="nav" href="#">Setting</a></li>
-        <li><a class="nav" href="<?php //echo base_url('chat'); ?>">Chat</a></li>
-        <li><a class="nav" href="<?php //echo base_url('user_calendar')?>">Treatment Plan</a></li>
-        <li><a class="nav" href="<?php //echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
-        <li><a class="active" href="<?php //echo base_url('Booking'); ?>">Booking</a></li>
-        <li><a class="nav" href="#">Home</a></li>
+        <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
+        <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
+        <li><a class="nav" href="<?php echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
+        <li><a class="active" id="active" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
+        <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
     </ul>
     <div class="progress-bar" id="progress-bar">
 
@@ -168,22 +175,22 @@
                             onblur="this.size=0" onchange="this.size=0"> -->
                         <div id="date">
                             <div class="date-left">
-                            <input type="radio" name="date" value="today">Oct-6</br>
-                            <input type="radio" name="date" value="plus1">Oct-7</br>
-                            <input type="radio" name="date" value="plus2">Oct-8</br>
-                            <input type="radio" name="date" value="plus3">Oct-9</br>
-                            <input type="radio" name="date" value="plus4">Oct-10</br>
-                            <input type="radio" name="date" value="plus5">Oct-11</br>
-                            <input type="radio" name="date" value="plus6">Oct-12</br>
+                            <input type="radio" class="dateValue" value=<?php echo date('y-m-d') ?> ><?php echo date('M-d') ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+1 day")) ?>><?php echo date("M-d", strtotime("+1 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+2 day")) ?>><?php echo date("M-d", strtotime("+2 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+3 day")) ?>><?php echo date("M-d", strtotime("+3 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+4 day")) ?>><?php echo date("M-d", strtotime("+4 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+5 day")) ?>><?php echo date("M-d", strtotime("+5 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+6 day")) ?>><?php echo date("M-d", strtotime("+6 day")) ?></br>
                             </div>
                             <div class="date-right">
-                            <input type="radio" name="date" value="plus7">Oct-13</br>
-                            <input type="radio" name="date" value="plus8">Oct-14</br>
-                            <input type="radio" name="date" value="plus9">Oct-15</br>
-                            <input type="radio" name="date" value="plus10">Oct-16</br>
-                            <input type="radio" name="date" value="plus11">Oct-17</br>
-                            <input type="radio" name="date" value="plus12">Oct-18</br>
-                            <input type="radio" name="date" value="plus13">Oct-19</br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+7 day")) ?>><?php echo date("M-d", strtotime("+7 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+8 day")) ?>><?php echo date("M-d", strtotime("+8 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+9 day")) ?>><?php echo date("M-d", strtotime("+9 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+10 day")) ?>><?php echo date("M-d", strtotime("+10 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+11 day")) ?>><?php echo date("M-d", strtotime("+11 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+12 day")) ?>><?php echo date("M-d", strtotime("+12 day")) ?></br>
+                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+13 day")) ?>><?php echo date("M-d", strtotime("+13 day")) ?></br>
                             </div>
                         </div>
                     </div> 
@@ -198,20 +205,20 @@
                         <div id="time">
                             <div class= time-left>
                                 <div class="am">AM</div>
-                                <input type="radio" name="time" value="9:00 - 9.30" onclick = changeTimeBtn() >9:00 - 9.30</br>
-                                <input type="radio" name="time" value="9:30 - 10:00" onclick = changeTimeBtn() >9:30 - 10:00</br>
-                                <input type="radio" name="time" value="10:00 - 10.30" onclick = changeTimeBtn()>10:00 - 10.30</br>
-                                <input type="radio" name="time" value="10:30 - 11:00" onclick = changeTimeBtn()>10:30 - 11:00</br>
-                                <input type="radio" name="time" value="11:00 - 11.30" onclick = changeTimeBtn()>11:00 - 11.30</br>
+                                <input type="radio" class="timeValue" value="09:00:00"  onclick = changeTimeBtn() >9:00 - 9.30</br>
+                                <input type="radio" class="timeValue" value="09:30:00"  onclick = changeTimeBtn() >9:30 - 10:00</br>
+                                <input type="radio" class="timeValue" value="10:00:00"  onclick = changeTimeBtn()>10:00 - 10.30</br>
+                                <input type="radio" class="timeValue" value="10:30:00"  onclick = changeTimeBtn()>10:30 - 11:00</br>
+                                <input type="radio" class="timeValue" value="11:00:00"  onclick = changeTimeBtn()>11:00 - 11.30</br>
                             </div>
                             <div class="time-right">
                                 <div class="pm">PM</div>
-                                <input type="radio" name="time" value="13:00 - 13:30" onclick = changeTimeBtn()>13:00 - 13:30</br>
-                                <input type="radio" name="time" value="13:30 - 14:00" onclick = changeTimeBtn()>13:30 - 14:00</br>
-                                <input type="radio" name="time" value="14:00 - 14:30" onclick = changeTimeBtn()>14:00 - 14:30</br>
-                                <input type="radio" name="time" value="14:30 - 15:00" onclick = changeTimeBtn()>14:30 - 15:00</br>
-                                <input type="radio" name="time" value="15:00 - 15:30" onclick = changeTimeBtn()>15:00 - 15:30</br>
-                                <input type="radio" name="time" value="15:30 - 16:00" onclick = changeTimeBtn()>15:30 - 16:00</br>
+                                <input type="radio" class="timeValue" value="13:00:00" onclick = changeTimeBtn()>13:00 - 13:30</br>
+                                <input type="radio" class="timeValue" value="13:30:00" onclick = changeTimeBtn()>13:30 - 14:00</br>
+                                <input type="radio" class="timeValue" value="14:00:00" onclick = changeTimeBtn()>14:00 - 14:30</br>
+                                <input type="radio" class="timeValue" value="14:30:00" onclick = changeTimeBtn()>14:30 - 15:00</br>
+                                <input type="radio" class="timeValue" value="15:00:00" onclick = changeTimeBtn()>15:00 - 15:30</br>
+                                <input type="radio" class="timeValue" value="15:30:00" onclick = changeTimeBtn()>15:30 - 16:00</br>
                             </div>
                     </div>
                     </div> 
@@ -286,29 +293,29 @@
                                             <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
                                         </figure>
                                         <section class="right-name">
-                                            <h3>Amy</h3>
+                                            <h3 id="dname"></h3>
                                         </section>
                                 </div>
                                 <div class="doctor-box">
                                     <div id="specialist" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/medical.png"  alt="specialist-icon">
-                                        <div>Specialist: cardiology</div>
+                                        <div id="specialist">Specialist: </div>
                                     </div>
                                     <div id="Language" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/language.png"  alt="language-icon">
-                                        <div>Language: English & Mandarin</div>
+                                        <div id="lan">Language: </div>
                                     </div>
                                     <div id="working-hour" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/working.png"  alt="working-icon">
                                         <div class="working">
                                             <div>Working Hours:</div>
-                                            <div class="working-time"> Mon - Fri:  9am - 4pm</div>
-                                            <div class="working-time"> Sat & Sun: 1pm - 4pm</div>
+                                            <div id="dworking" class="working-time"> </div>
+                                            <!-- <div class="working-time"> Sat & Sun: 1pm - 4pm</div> -->
                                         </div>
                                     </div>
                                     <div id="email" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/icon02.png"  alt="email">
-                                        <div><?php echo $this->session->userdata['logged_in']['email'];?></div>
+                                        <div id="demail"></div>
                                     </div>
                                     <div id="hospital" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/hospital.png"  alt="hospital">
@@ -329,11 +336,11 @@
         <div class="check">
             <div class="check-title"> Please check and confirm your booking information:</div>
             <div class="check-info">
-                <div> Visiting Person: Amy</div>
+                <div> Visiting Person:<?php echo $this->session->userdata['logged_in']['username']?></div>
                 <div> Hospital : XXX</div>
-                <div> Doctor : Ben</div>
-                <div> Department : Cardiology</div>
-                <div> Treatment Time : Oct 06 2020, 10:00 A.M.</div>
+                <div id="bdname"> Doctor :</div>
+                <div id="bddept"> Department :</div>
+                <div id="bddate"> Treatment Time :</div>
             </div>
             <div class="check-btn">
                     <button onclick="checkLast()" id="check-last-btn"> Last-step</button>
@@ -354,7 +361,8 @@
             
 </body>
 <script>
-    let bookingInfo = [dept:"", distance:"", languages:"", bookingDate:"", bookingTime:""];
+    let bookingInfo = {dept:"", distance:"", languages:"", bookingDate:"", bookingTime:""};
+    let dInfo = {};
     function changeColor() {
         var departmentBtn = document.getElementById("contiue-btn");
         departmentBtn.style.background = "#157EE6";
@@ -375,8 +383,9 @@
             if (choosed[i].checked == true){
                 hasChoosed = true;
                 var dptValue =document.getElementById("departmentChoose").value = choosed[i].value;
-                bookingInfo.dept = deptValue;
+                bookingInfo.dept = dptValue;
                 console.log(dptValue);
+                console.log(bookingInfo);
             }
         } 
         if(hasChoosed == false){
@@ -389,15 +398,17 @@
         document.getElementById("distance-language-page").style.display="block";
     }
     function dlContinue(){
-        var choosed = document.getElementsByClassName("distance")
-        var secondChoosed = document.getElementsByClassName("language")
-        var hasChoosed = false
-        var hasSecondChoosed = false
+        var choosed = document.getElementsByClassName("distance");
+        var secondChoosed = document.getElementsByClassName("language");
+        var hasChoosed = false;
+        var hasSecondChoosed = false;
+        var languageValue = [];
         for(var i=0; i<choosed.length; i++) {  
             if (choosed[i].checked == true){
                 hasChoosed = true;
                 var distanceValue = document.getElementById("distanceChoose").value = choosed[i].value;
-                console.log(choosed[i].value);
+                bookingInfo.distance = distanceValue;
+                console.log(bookingInfo);
             }
         } 
         if(hasChoosed == false){
@@ -407,8 +418,10 @@
         for(var i=0; i<secondChoosed.length; i++) {  
             if (secondChoosed[i].checked == true){
                 hasSecondChoosed = true;
-                var languageValue = document.getElementById("languageChoose").value = secondChoosed[i].value;
-                console.log(languageValue);
+               
+                languageValue.push(document.getElementById("languageChoose").value = secondChoosed[i].value);
+                bookingInfo.languages = languageValue;
+                console.log(bookingInfo);
             }
         } 
         if(hasSecondChoosed == false){
@@ -427,10 +440,56 @@
         document.getElementById("distance-language-page").style.display="none";
     }
     function dtContinue(){        
-        // var dateValue = document.getElementById("dateChoose").value = document.getElementById("dateSelect").value;
-        // var timeValue = document.getElementById("timeChoose").value = document.getElementById("timeSelect").value;
-        // console.log(dateValue);
-        // console.log(timeValue);
+        var choosed = document.getElementsByClassName("dateValue");
+        var hasChoosed = false;
+        for(var i=0; i<choosed.length; i++) {  
+            if (choosed[i].checked == true){
+                hasChoosed = true;
+                var dateValue = choosed[i].value;
+                bookingInfo.bookingDate = dateValue;
+                console.log(dateValue);
+                console.log(bookingInfo);
+            }
+        }
+        var timeChoosed = document.getElementsByClassName("timeValue");
+        var timeIsChoosed = false;
+        for(var i=0; i<timeChoosed.length; i++) {  
+            if (timeChoosed[i].checked == true){
+                timeIsChoosed = true;
+                var timeValue = timeChoosed[i].value;
+                bookingInfo.bookingTime = timeValue;
+                console.log(timeValue);
+                console.log(bookingInfo);
+            }
+        }
+
+        $.ajax({
+            url:"<?php echo base_url(); ?>Booking/fetch",
+            method: "POST",
+            data: {dept:bookingInfo.dept,
+                   distance: bookingInfo.distance,
+                   languages: bookingInfo.languages,
+                   bookingDate: bookingInfo.bookingDate,
+                   bookingTime: bookingInfo.bookingTime
+            },
+            success: function(msg) {
+                console.log(msg);
+                var doctorInfo = $.parseJSON(msg);
+                dInfo = doctorInfo;
+                console.log(doctorInfo);
+                $("#dname").append(doctorInfo.name);
+                $("#specialist").append( doctorInfo.specialist);
+                $("#lan").append( doctorInfo.languages);
+                $("#dworking").append(doctorInfo.workingHours);
+                $("#demail").append(doctorInfo.email);
+                $("#bdname").append(doctorInfo.name);
+                $("#bddept").append( doctorInfo.specialist);
+                $("#bddate").append(bookingInfo.bookingDate +','+ bookingInfo.bookingTime);
+
+            }
+        });
+
+
         document.getElementById("title-4").style.display="block";
         document.getElementById("doctor-page").style.display="block";
         document.getElementById("title-3").style.display="none";
@@ -460,8 +519,15 @@
     } 
 
     function checkConfirm() {
-        var popLayer = document.getElementById("popLayer"); // display the content
-        popLayer.style.display = "block";
+        $.ajax({
+            url:"<?php echo base_url(); ?>Booking/sendEmail",
+            method: "POST",
+            data: dInfo,
+            success: function() {
+                var popLayer = document.getElementById("popLayer"); // display the content
+                popLayer.style.display = "block";
+            }           
+        });
     };
 
     function closeWindows() {
@@ -484,4 +550,11 @@
 	  }
 	}
     </script>
+    
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </html>
