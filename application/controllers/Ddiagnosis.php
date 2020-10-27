@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Checker extends CI_Controller {
+class Ddiagnosis extends CI_Controller {
 
     function __construct(){
         parent:: __construct();
@@ -12,14 +12,7 @@ class Checker extends CI_Controller {
 
     public function index(){
         $this->load->view('users/nav');
-        $this->load->view('users/sympton-checker');
+        $this->load->view('users/diagnosis');
         
     }
-
-    public function result($symptomName){
-        $result = $this->symptoms->showSymptoms($symptomName);
-        echo json_encode($result);
-    }
-
-
 }

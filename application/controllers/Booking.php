@@ -12,13 +12,12 @@ class Booking extends CI_Controller {
     }
 
     public function index() {
-        $this->load->view('users/booking');
-       
+		$this->load->view('users/nav');
+		$this->load->view('users/booking');
     }
     
     function sendEmail()
 	{   
-
         $username = $this->session->userdata['logged_in']['username'];
 		$useremail = $this->session->userdata['logged_in']['email'];
 		$dnmae = $this->input->post('name');
@@ -37,8 +36,6 @@ class Booking extends CI_Controller {
 					 <p>Department: " . $dept . "</p>
 					 <p>Treatment Time: " . $bookingDate . "," . $bookingTime . "</p>
 		";
-		// print_r($username);
-		// print_r($message);
 		$config = array(
 			'protocol' => 'smtp',
 			'smtp_host' => 'mailhub.eait.uq.edu.au',
@@ -55,7 +52,7 @@ class Booking extends CI_Controller {
 		$this->email->message($message);
 		if ($this->email->send()) {
 			$data_appointment = array(
-				'title' => "Appointment by " . $username . " in PA hospital",
+				'title' => "Appointment by " . $username,
 				'start_event' => $bookingStartDate,
 				'end_event' => $bookingEndData,
 				'user' => $dnmae

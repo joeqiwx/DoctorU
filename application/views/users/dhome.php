@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Calendar </title>
+	<title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
 	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
@@ -35,7 +35,7 @@ body {
 
 .title{
     margin-top: 15px;
-    width: 70%;
+    width: 90%;
 }
 .top img{
     width: 160px;
@@ -210,21 +210,6 @@ article{
 
 
 				},
-
-					eventClick:function (event) {
-						if(confirm("Remove it?")){
-							var id = event.id;
-							$.ajax({
-								url:"<?php echo base_url(); ?>appointment/delete",
-								type:"POST",
-								data: {id:id},
-								success: function () {
-									calendar.fullCalendar('refetchEvents');
-									alert("Remove successfully.");
-								}
-							})
-						}
-					}
 			}
 			)
 		})
@@ -236,7 +221,6 @@ article{
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title"><b>Appointment</p>
-    <button>ENG</button>
     </div>
     <article>
     <div class="left-div">

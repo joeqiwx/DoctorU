@@ -9,7 +9,7 @@ class Chat extends CI_Controller {
         $this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('session');
-		$this->load->model('relation');
+        $this->load->model('relation');
     }
 
     public function index(){

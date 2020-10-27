@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)https://deco3801-zelda.uqcloud.net/DoctorU/users/login -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <?php
 if (isset($this->session->userdata['logged_in_doctor'])) {
@@ -11,7 +10,7 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>docter profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/doctor_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,8 +22,7 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
     <?php if (isset($this->session->userdata['logged_in_doctor'])) {
         $username = ($this->session->userdata['logged_in_doctor']['username']);?>
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/newLogo.png"> </div>
-    <p class="title">Today is September 9, 2020.  Have a nice day, <b><?php echo $username?></p>
-    <button>ENG</button>
+    <p class="title">Today is <?php echo date('M-d')  ?>.  Have a nice day, <b><?php echo $username?></p>
     </div>
     <article>
     <div class="left-div">

@@ -4,6 +4,7 @@ class Appointment extends  CI_Controller{
 		parent:: __construct();
 		$this->load->database();
 		$this->load->model('user_calendar_model');
+		$this->load->model('Appointment_model');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->library('session');
@@ -57,5 +58,19 @@ class Appointment extends  CI_Controller{
 
 		}
 
+	}
+
+	function load_pInfor() {
+		$pName = $this->input->post('pName');
+		$pInfor = $this->Appointment_model->fetch_patient($pName);
+		foreach ($pInfor->result_array() as $pInfor_row){
+			$pdata[] = array(
+				'age' => $pInfor_row['age'],
+				'allergy' => $pInfor_row['allergy'],
+				'medicalHistory' => $pInfor_row['medicalHistory'],
+				'email' => $pInfor_row['email']
+			);
+		}
+		echo json_encode($pdata);
 	}
 }

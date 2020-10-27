@@ -18,7 +18,7 @@ body {
 
 .title{
     margin-top: 15px;
-    width: 70%;
+    width: 90%;
 }
 .top img{
     width: 160px;
@@ -115,7 +115,7 @@ article{
 .content{
     margin:0 auto;
     width: 1384px;
-    height: 640px;
+    height: 660px;
     padding-bottom: 15px;
     background-color: #F2F2F2;
     border-radius: 10px;

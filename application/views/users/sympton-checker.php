@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)https://deco3801-zelda.uqcloud.net/DoctorU/users/homePage -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fira+Code|Roboto&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/symptom-checker-nav.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/nav.css">
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/symptom-checker-nav.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <style>
 
@@ -40,28 +40,42 @@
 </head>
 
 <body>
-
-	<ul>
-    <?php if (isset($this->session->userdata['logged_in'])) {
-        $username = ($this->session->userdata['logged_in']['username']);?>
-    <button onclick="window.location.href='<?php echo base_url('users/profile'); ?>'"> <i class="far fa-user" ></i>&nbsp;<?php echo $username?></button>
-    <?php } else { ?>
-        <button onclick="window.location.href='<?php echo base_url('users/login'); ?>'"> <i class="far fa-user" ></i>&nbsp;Login</button>
-        <?php } ?>
-        <li><a class="nav" href="#">Setting</a></li>
-        <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
-        <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
-        <li><a class="active" href="#">Diagnosis</a></li>
-        <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
-        <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
-    </ul>
     
-    <div class="breadcrumbs">
-		<ul>
-			<li class="title-1"><p>Info</p></li>
-			<li class="title-2"><p>Symptoms</p></li>
-			<li class="title-3"><p>Possible causes</p></li>
-		</ul>
+    <div class="progress-bar">
+		<div class="title-1" id="title-1">
+            <div class="subtitle">
+                <div class="rectangle">
+                    <p>Info</p>
+                </div>
+                <div class="triangle-right"></div>
+            </div>
+        </div>
+        <div class="title-2" id="title-2" style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                <div class="rectangle">
+                    <p>Symptoms</p>
+                </div>
+                <div class="triangle-right"></div>
+            </div>
+        </div>
+        <div class="title-3" id="title-3"style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                <div class="rectangle">
+                    <p>Possible causes</p>
+                </div>
+                <div class="triangle-right"></div>
+            </div>
+		</div>
+		<div class="title-4" id="title-4"style="display:none" >
+            <div class="subtitle">
+                <div class="triangle-left"></div>
+                 <div class="rectangle">
+                    <p>Possible causes</p>
+                </div>
+             </div>
+        </div>
     </div>
 	
 	<div class="main">
@@ -207,16 +221,8 @@
 			return;
 		}
 		
-		// Remove first title
-		$('.title-1')[0].style.background = "white";
-		var removeOne = document.head.appendChild(document.createElement("style"));
-		removeOne.innerHTML = ".title-1 p:after {border-left: 20px solid white;}";
-		
-		// Restore second title
-		$('.title-2')[0].style.background = "#157EE6";
-		var addTwo = document.head.appendChild(document.createElement("style"));
-		addTwo.innerHTML = ".title-2 p:after {border-left: 20px solid #157EE6;}";
-		
+		document.getElementById("title-1").style.display="none";
+		document.getElementById("title-2").style.display="block";
 		$('.information').remove();
 		$('.main').append(symptomsDiv);
 	}
@@ -262,14 +268,10 @@
 		symptoms[12] = laryngealPain;
 		
 		// Remove second title
-		$('.title-2')[0].style.background = "white";
-		var removeTwo = document.head.appendChild(document.createElement("style"));
-		removeTwo.innerHTML = ".title-2 p:after {border-left: 20px solid white;}";
-		
+		document.getElementById("title-2").style.display="none";
+	
 		// Restore third title
-		$('.title-3')[0].style.background = "#157EE6";
-		var addThree = document.head.appendChild(document.createElement("style"));
-		addThree.innerHTML = ".title-3 p:after {border-left: 20px solid #157EE6;}";
+		document.getElementById("title-3").style.display="block";
 		
 		// change div
 		$('.symptoms').remove();
@@ -333,6 +335,8 @@
 			// Add information
 			$('.description-heading')[0].innerHTML = "No Match";
 		}
+		document.getElementById("title-3").style.display="none";
+		document.getElementById("title-4").style.display="block";
 	}
 </script>
 

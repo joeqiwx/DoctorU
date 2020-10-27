@@ -3,7 +3,7 @@
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title></title>
+    <title>docter treatment plan</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
@@ -28,7 +28,7 @@ body {
 
 .title{
     margin-top: 15px;
-    width: 70%;
+    width: 90%;
 }
 .top img{
     width: 160px;
@@ -140,7 +140,6 @@ article{
         $username = ($this->session->userdata['logged_in_doctor']['username']);?>
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title">Today is <?php echo date('M-d')  ?>.  Have a nice day, <b><?php echo $username?></p>
-    <button>ENG</button>
     </div>
     <article>
     <div class="left-div">
@@ -157,10 +156,10 @@ article{
             <li><a class="left-nav" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
         </ul>
     </div>
-    <div class ="content">
-    <form class="form-inline my-2 my-lg-0">
+    <div class ="content" >
+    <form class="form-inline my-2 my-lg-0" style="margin-left:480px;">
 			<span class="input-group-addon">Search</span>
-			<input type="text" name="search_text" id="search_text" placeholder="Search patient information" class="form-control" style="text-align:center"/>
+			<input type="text" name="search_text" id="search_text" placeholder="Search patient information" class="form-control" style="text-align:center; width:400px;"/>
 		</form>
         <div id="result"></div>
 

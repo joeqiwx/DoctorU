@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)https://deco3801-zelda.uqcloud.net/DoctorU/users/login -->
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/doctor_nav.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/doctor_chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
 </head>
@@ -18,8 +18,7 @@
     <?php if (isset($this->session->userdata['logged_in_doctor'])) {
         $username = ($this->session->userdata['logged_in_doctor']['username']);?>
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/newLogo.png"> </div>
-    <p class="title">Today is September 9, 2020.  Have a nice day, <b><?php echo $username?></p>
-    <button>ENG</button>
+    <p class="title">Today is <?php echo date('M-d')  ?>.  Have a nice day, <b><?php echo $username?></p>
     </div>
     <article>
     <div class="left-div">
@@ -64,7 +63,6 @@
                 <div class="chat-input">
                     <form action="" id="myMessage" method="post">
                         <div class ="phone-video">
-                            <img class = "phone" src="<?php echo base_url() ?>assets/images/phone.png" alt="phone">
                             <a href="https://doctor-chitchat.herokuapp.com" target="_blank">
                             <img class = "video" src="<?php echo base_url() ?>assets/images/video.png" alt="video">
                             </a>

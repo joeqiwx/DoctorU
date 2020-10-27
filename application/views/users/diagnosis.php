@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Diagnosis</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/nav.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/diagnosis.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fira+Code|Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,6 +14,10 @@
     #google_translate_element {
         width: 5%;
     }
+
+    .honey img:hover{
+        cursor:pointer;
+    }
     </style>
 </head>
 
@@ -20,35 +25,34 @@
 <div id="google_translate_element"></div>
     <div id="nav-placeholder">
     </div>
-    <ul>
-    <?php if (isset($this->session->userdata['logged_in'])) {
-        $username = ($this->session->userdata['logged_in']['username']);?>
-    <button onclick="window.location.href='<?php echo base_url('users/profile'); ?>'"> <i class="far fa-user" ></i>&nbsp;<?php echo $username?></button>
-    <?php } else { ?>
-        <button onclick="window.location.href='<?php echo base_url('users/login'); ?>'"> <i class="far fa-user" ></i>&nbsp;Login</button>
-        <?php } ?>
-        <li><a class="nav" href="#">Setting</a></li>
-        <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
-        <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
-        <li><a class="active" href="#">Diagnosis</a></li>
-        <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
-        <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
-    </ul>
+    
     <div class="intro-container">
-        <p>Diagnosis</p>
-    </div>
+        <div class="dig-title">Diagnosis</div>
+        <div class="dig-text"> By clicking on the common symptoms or disease categories listed in the hive, you can get medical consultation service 
+        from qualified general practitioners or specialists via text and video chat. </div>
+        <div class="dig-text">If you just feel uncomfortable but your symptom is not listed in the hive, you can click the symptom check button below
+         to screen for possible causes, then chat withrelevant doctors.</div>
+        </div>
+    
     <div class="check">
         <button onclick="window.location.href='<?php echo base_url('checker');?>'">Symptom Check ></button>
     </div>
     <div class="honey">
         <a href="<?php echo base_url('Chat/matchingDoctor');?>">
-        <img src="<?php echo base_url(); ?>assets/images/ch.png" alt="" class="one" > </a>
-        <img src="<?php echo base_url(); ?>assets/images/01.png" alt="" class="two">
-        <img src="<?php echo base_url(); ?>assets/images/t.png" alt="" class="three">
-        <img src="<?php echo base_url(); ?>assets/images/sight.png" alt="" class="four">
-        <img src="<?php echo base_url(); ?>assets/images/m.png" alt="" class="five">
-        <img src="<?php echo base_url(); ?>assets/images/s.png" alt="" class="six">
-        <img src="<?php echo base_url(); ?>assets/images/h.png" alt="" class="seven">
+        <img src="<?php echo base_url(); ?>assets/images/ch.png" alt="" class="one" 
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'"> </a>
+        <img src="<?php echo base_url(); ?>assets/images/01.png" alt="" class="two" 
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
+        <img src="<?php echo base_url(); ?>assets/images/t.png" alt="" class="three"
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
+        <img src="<?php echo base_url(); ?>assets/images/sight.png" alt="" class="four"
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
+        <img src="<?php echo base_url(); ?>assets/images/m.png" alt="" class="five"
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
+        <img src="<?php echo base_url(); ?>assets/images/s.png" alt="" class="six"
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
+        <img src="<?php echo base_url(); ?>assets/images/h.png" alt="" class="seven"
+        onclick="window.location.href='<?php echo base_url('Chat/matchingDoctor'); ?>'">
     </div>
     <div class="dia"><img src="<?php echo base_url(); ?>assets/images/diagnosis.svg" alt=""></div>
 
@@ -59,5 +63,4 @@ function googleTranslateElementInit() {
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-
 </html>

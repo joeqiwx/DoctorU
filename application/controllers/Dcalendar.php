@@ -31,7 +31,7 @@ class Dcalendar extends  CI_Controller{
 		$doctorName = $this->session->userdata['logged_in_doctor']['username'];
 		if($this->input->post('title')){
 			$data = array(
-				'title' => $this->input->post('title'),
+				'title' => $this->input->post('title') . PHP_EOL. "--from ". $doctorName,
 				'start_event' => $this->input->post('start'),
 				'end_event' => $this->input->post('end'),
 				'user' =>  $this->session->userdata($doctorName)

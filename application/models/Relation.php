@@ -26,16 +26,12 @@ class Relation extends CI_Model{
     }
 
     public function isFriend($user_id, $friend_id) {
-//        $this->db->select('friend_id');
-//        $this->db->from($this->relation);
         $this->db->select('*');
         $this->db->from($this->relation);
         $this->db->where('user_id', $user_id);
         $this->db->where('friend_id', $friend_id);
         $query = $this->db->get();
-//        $result = $query->result_array();
         $result = $query->result_array();
-//        return !empty($result)?$result:false;
         return $result;
 
     }

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0057)https://deco3801-zelda.uqcloud.net/DoctorU/users/homePage -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <title> booking</title>
@@ -11,27 +10,12 @@
     <style>
     #google_translate_element {
         width: 5%;
-        
     }
     </style>
     </head>
 <body>
 <div id="google_translate_element"></div>
-    <ul class="nav-ul">
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"> <i class="far fa-user"></i>&nbsp;<?php echo $this->session->userdata['logged_in']['username'];?></button>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="<?php echo base_url('users/profile'); ?>">Profile</a>
-                <a href="<?php echo base_url('users/logout'); ?>" id="logout">Logout</a>
-            </div>
-        </div>
-        <li><a class="nav" href="#">Setting</a></li>
-        <li><a class="nav" href="<?php echo base_url('chat'); ?>">Chat</a></li>
-        <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
-        <li><a class="nav" href="<?php echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
-        <li><a class="active" id="active" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
-        <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
-    </ul>
+
     <div class="progress-bar" id="progress-bar">
 
         <div class="title-1" id="title-1">
@@ -171,26 +155,25 @@
                     <div class="date-title" id="dateChoose" value="" > Please choose the appointment date:</div>
                     <div id="date-column"  class="select-date-time">
                         <div class="date-subtitle">Date:</div>
-                        <!-- <select name="select-date" class="select-date-time" id="dateSelect" onmousedown="if(this.options.length>7){this.size=8}" 
-                            onblur="this.size=0" onchange="this.size=0"> -->
+
                         <div id="date">
                             <div class="date-left">
-                            <input type="radio" class="dateValue" value=<?php echo date('y-m-d') ?> ><?php echo date('M-d') ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+1 day")) ?>><?php echo date("M-d", strtotime("+1 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+2 day")) ?>><?php echo date("M-d", strtotime("+2 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+3 day")) ?>><?php echo date("M-d", strtotime("+3 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+4 day")) ?>><?php echo date("M-d", strtotime("+4 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+5 day")) ?>><?php echo date("M-d", strtotime("+5 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+6 day")) ?>><?php echo date("M-d", strtotime("+6 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date('y-m-d') ?> ><?php echo date('M-d') ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+1 day")) ?>><?php echo date("M-d", strtotime("+1 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+2 day")) ?>><?php echo date("M-d", strtotime("+2 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+3 day")) ?>><?php echo date("M-d", strtotime("+3 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+4 day")) ?>><?php echo date("M-d", strtotime("+4 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+5 day")) ?>><?php echo date("M-d", strtotime("+5 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+6 day")) ?>><?php echo date("M-d", strtotime("+6 day")) ?></br>
                             </div>
                             <div class="date-right">
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+7 day")) ?>><?php echo date("M-d", strtotime("+7 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+8 day")) ?>><?php echo date("M-d", strtotime("+8 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+9 day")) ?>><?php echo date("M-d", strtotime("+9 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+10 day")) ?>><?php echo date("M-d", strtotime("+10 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+11 day")) ?>><?php echo date("M-d", strtotime("+11 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+12 day")) ?>><?php echo date("M-d", strtotime("+12 day")) ?></br>
-                            <input type="radio" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+13 day")) ?>><?php echo date("M-d", strtotime("+13 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+7 day")) ?>><?php echo date("M-d", strtotime("+7 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+8 day")) ?>><?php echo date("M-d", strtotime("+8 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+9 day")) ?>><?php echo date("M-d", strtotime("+9 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+10 day")) ?>><?php echo date("M-d", strtotime("+10 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+11 day")) ?>><?php echo date("M-d", strtotime("+11 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+12 day")) ?>><?php echo date("M-d", strtotime("+12 day")) ?></br>
+                            <input type="radio" name="dateValue" class="dateValue" value=<?php echo date("Y-m-d", strtotime("+13 day")) ?>><?php echo date("M-d", strtotime("+13 day")) ?></br>
                             </div>
                         </div>
                     </div> 
@@ -199,26 +182,24 @@
                 <div class="time-column">
                     <div class="time-title" id="timeChoose" value=""> Please choose the appointment time:</div>
                     <div id="time-column" class="timeSelect">
-                        <!-- <select name="select-time" class="select-date-time" id="timeSelect" onmousedown="if(this.options.length>7){this.size=8}" 
-                            onblur="this.size=0" onchange="this.size=0"> -->
                         <div class="time-subtitle">Time:</div>
                         <div id="time">
                             <div class= time-left>
                                 <div class="am">AM</div>
-                                <input type="radio" class="timeValue" value="09:00:00"  onclick = changeTimeBtn() >9:00 - 9.30</br>
-                                <input type="radio" class="timeValue" value="09:30:00"  onclick = changeTimeBtn() >9:30 - 10:00</br>
-                                <input type="radio" class="timeValue" value="10:00:00"  onclick = changeTimeBtn()>10:00 - 10.30</br>
-                                <input type="radio" class="timeValue" value="10:30:00"  onclick = changeTimeBtn()>10:30 - 11:00</br>
-                                <input type="radio" class="timeValue" value="11:00:00"  onclick = changeTimeBtn()>11:00 - 11.30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="09:00:00"  onclick = changeTimeBtn() >9:00 - 9.30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="09:30:00"  onclick = changeTimeBtn() >9:30 - 10:00</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="10:00:00"  onclick = changeTimeBtn()>10:00 - 10.30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="10:30:00"  onclick = changeTimeBtn()>10:30 - 11:00</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="11:00:00"  onclick = changeTimeBtn()>11:00 - 11.30</br>
                             </div>
                             <div class="time-right">
                                 <div class="pm">PM</div>
-                                <input type="radio" class="timeValue" value="13:00:00" onclick = changeTimeBtn()>13:00 - 13:30</br>
-                                <input type="radio" class="timeValue" value="13:30:00" onclick = changeTimeBtn()>13:30 - 14:00</br>
-                                <input type="radio" class="timeValue" value="14:00:00" onclick = changeTimeBtn()>14:00 - 14:30</br>
-                                <input type="radio" class="timeValue" value="14:30:00" onclick = changeTimeBtn()>14:30 - 15:00</br>
-                                <input type="radio" class="timeValue" value="15:00:00" onclick = changeTimeBtn()>15:00 - 15:30</br>
-                                <input type="radio" class="timeValue" value="15:30:00" onclick = changeTimeBtn()>15:30 - 16:00</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="13:00:00" onclick = changeTimeBtn()>13:00 - 13:30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="13:30:00" onclick = changeTimeBtn()>13:30 - 14:00</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="14:00:00" onclick = changeTimeBtn()>14:00 - 14:30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="14:30:00" onclick = changeTimeBtn()>14:30 - 15:00</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="15:00:00" onclick = changeTimeBtn()>15:00 - 15:30</br>
+                                <input type="radio" name="timeValue" class="timeValue" value="15:30:00" onclick = changeTimeBtn()>15:30 - 16:00</br>
                             </div>
                     </div>
                     </div> 
@@ -230,63 +211,6 @@
             <div class="doctor" id="doctor" >
                 <div class="doctor-title"> Please choose the doctor:</div>
                     <div class="content">
-                        <div class="column-left">
-                            <div class="searchbox">
-                                <input type="text" name="search" placeholder="search contact" >
-                            </div>
-                
-                            <div class="doctor-namelist">
-                                <div class="doctor-person">
-                                    <figure>
-                                        <img src="<?php echo base_url(); ?>assets/images/amy.png"   alt="doctorperson">
-                                    </figure>
-                                    <section class="doctor-name">
-                                        <h3>Amy</h3> 
-                                    </section>
-                                </div>
-                                <div class="doctor-person">
-                                    <figure>
-                                        <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
-                                    </figure>
-                                    <section class="doctor-name">
-                                        <h3>Amy</h3>
-                                    </section>
-                                </div>
-                                <div class="doctor-person">
-                                    <figure>
-                                        <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
-                                    </figure>
-                                    <section class="doctor-name">
-                                        <h3>Amy</h3>
-                                    </section>
-                                </div>
-                                <div class="doctor-person">
-                                    <figure>
-                                        <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
-                                    </figure>
-                                    <section class="doctor-name">
-                                        <h3>Amy</h3>
-                                    </section>
-                                </div>
-                                <div class="doctor-person">
-                                    <figure>
-                                        <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
-                                    </figure>
-                                    <section class="doctor-name">
-                                        <h3>Amy</h3>
-                                    </section>
-                                </div>
-                                <div class="doctor-person">
-                                        <figure>
-                                            <img src="<?php echo base_url(); ?>assets/images/amy.png"  alt="doctorperson">
-                                        </figure>
-                                        <section class="doctor-name">
-                                            <h3>Amy</h3>
-                                        </section>
-                                </div>
-                            </div>
-                                
-                            </div>
                             <div class="column-right">
                                 <div class="right-person">
                                         <figure>
@@ -319,10 +243,9 @@
                                     </div>
                                     <div id="hospital" class="label">
                                         <img src="<?php echo base_url(); ?>assets/images/hospital.png"  alt="hospital">
-                                        <div>Primary Office: XXX Hospital</div>
+                                        <div>Primary Office: PA Hospital</div>
                                     </div>
                                 </div>
-                                <button  id="select-btn" onclick="window.location.href='<?php echo base_url('Booking/sendEmail');?>'"> select</button>
                                 
                             </div>
                         </div> 
@@ -337,7 +260,7 @@
             <div class="check-title"> Please check and confirm your booking information:</div>
             <div class="check-info">
                 <div> Visiting Person:<?php echo $this->session->userdata['logged_in']['username']?></div>
-                <div> Hospital : XXX</div>
+                <div> Hospital : PA Hospital</div>
                 <div id="bdname"> Doctor :</div>
                 <div id="bddept"> Department :</div>
                 <div id="bddate"> Treatment Time :</div>
@@ -354,7 +277,7 @@
         <div class="pop-content">Your booking has been confirmed.</div>
         <div class="pop-content">Check your email for details.</div>
 
-        <button id="ok-btn" onclick="closeWindows()">OK </button>
+        <button id="ok-btn" onclick="window.location.href='<?php echo base_url('home'); ?>'">OK </button>
     </div>
 </div>
 
@@ -534,21 +457,6 @@
         var popLayer = document.getElementById("popLayer");
         popLayer.style.display = "none";
     }
-	function myFunction() {
-	  document.getElementById("myDropdown").classList.toggle("show");
-	}
-	window.onclick = function(event) {
-	  if (!event.target.matches('.dropbtn')) {
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-		var i;
-		for (i = 0; i < dropdowns.length; i++) {
-		  var openDropdown = dropdowns[i];
-		  if (openDropdown.classList.contains('show')) {
-			openDropdown.classList.remove('show');
-		  }
-		}
-	  }
-	}
     </script>
     
     <script type="text/javascript">

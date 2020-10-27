@@ -1,0 +1,126 @@
+
+.blocks {
+    position: relative;
+    width: 30%;
+    left: 55vw;
+    top: 10vh;
+}
+
+.function {
+    float: left;
+    background-color: #157EE6; 
+    width: 25vw;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border: none;
+    color: white;
+    padding: 35px 52px 25px 35px;
+    margin: 2vh 0;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 10px 10px rgba(204, 202, 202, 0.692);
+}
+
+.fas {
+    float: left;
+    padding-right: 3vw;
+    padding-top: 1vh;
+    font-size: 40px;
+}
+
+.blocks p {
+    float: left;
+}
+
+img {
+    width: 45%;
+    position: relative;
+    left: -25vw;
+    top: 10vh;
+}
+
+.intro-container {
+    display: block;
+    position: relative;
+    left: 8vw;
+    top: 20vh;
+    width: 25%;
+    /* background-color: rgba(230, 220, 220, 0.671); */
+    height:300px;
+    padding:5px;
+    /* text-align:center;
+    font-size: 30px; */
+}
+.dig-title{
+    text-align:center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top:10px;
+}
+.dig-text{
+    margin-top: 10px;
+    font-size:20px;
+}
+
+.check {
+    position: absolute;
+    left: 13vw;
+    margin-top: 25vh;
+    
+}
+
+.check button {
+    font-size: 20px;
+    padding: 10px 30px;
+    box-shadow: 5px 5px rgba(156, 154, 154, 0.548);
+}
+
+.honey {
+    position: relative;
+    left: 78vw;
+    top: -19vh;
+    text-align: center;
+}
+
+img.one, img.two, img.three, img.four, img.five, img.six, img.seven {
+    position: absolute;
+    width: 13%;
+}
+img.one{
+    margin-top: 6vh;
+}
+img.two{
+    top: -8vh;
+}
+img.three{
+    margin-top: 30vh;
+}
+img.four{
+    margin-top: -5vh;
+    left: -35vw;
+}
+img.five{
+    margin-top: 19vh;
+    left: -35vw;
+}
+img.six{
+    margin-top: 19vh;
+    left: -15vw;
+}
+img.seven{
+    margin-top: -5vh;
+    left: -15vw;
+}
+
+.dia {
+    left: 96vw;
+    top: -58vh;
+    position: relative;
+    width: 45%;
+}
+
+.dia img {
+    position: absolute;
+    top: 52vh;
+
+}

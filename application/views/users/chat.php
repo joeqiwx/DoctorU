@@ -5,33 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>chat</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/chat.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Fira+Code|Roboto&display=swap" rel="stylesheet">
     <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
-    
 </head>
+<style>
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: 79%;
+    margin-top: 2%;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    }
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown a:hover {
+    background-color: #EF8354;
+    color: white;
+    }
+
+    .show {display: block;}
+</style>
 
 <body>
-        <div id="nav-placeholder"> </div>
-        <div id="navigation">
-            <ul>
-            <?php if (isset($this->session->userdata['logged_in'])) {
-        $username = ($this->session->userdata['logged_in']['username']);?>
-    <button onclick="window.location.href='<?php echo base_url('users/profile'); ?>'"> <i class="far fa-user" ></i>&nbsp;<?php echo $username?></button>
-    <?php } else { ?>
+<div>
+
+</div>
+    <ul>
+        <div class="dropdown">
+        <?php if (isset($this->session->userdata['logged_in'])) {
+            $username = ($this->session->userdata['logged_in']['username']);?>
+        <button onclick="myFunction()" class="dropbtn"> <i class="far fa-user" ></i>&nbsp;<?php echo $username?></button>
+        <div id="myDropdown" class="dropdown-content">
+        <a href="<?php echo base_url('users/profile'); ?>">Profile</a>
+        <a href="<?php echo base_url('Users/logout'); ?>">Logout</a>
+        </div>
+        </div>
+        <?php } else { ?>
         <button onclick="window.location.href='<?php echo base_url('users/login'); ?>'"> <i class="far fa-user" ></i>&nbsp;Login</button>
         <?php } ?>
-                <li><a class="nav" href="#">Setting</a></li>
-                <li><a class="active" href="#">Chat</a></li>
-                <li><a class="nav" href="<?php echo base_url('user_calendar')?>">Treatment Plan</a></li>
-                <li><a class="nav" href="<?php echo base_url('users/diagnosis'); ?>">Diagnosis</a></li>
-                <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
-                <li><a class="nav" href="<?php echo base_url('users/homePage'); ?>">Home</a></li>
-            </ul> 
-        </div>
-
+        <li><a class="active" href="<?php echo base_url('Chat'); ?>">Chat</a></li>
+        <li><a class="nav" href="<?php echo base_url('User_calendar')?>">Treatment Plan</a></li>
+        <li><a class="nav" href="<?php echo base_url('Ddiagnosis'); ?>">Diagnosis</a></li>
+        <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
+        <li><a class="nav" href="<?php echo base_url('Home'); ?>">Home</a></li>
+    </ul>   
         <div class="content">
         <div class="column-left">
             <div class="searchbox">
@@ -46,22 +78,21 @@
                         </figure>
                         <section class="chat-name">
                             <h3><?php echo $friends[$i]['friend_name']?></h3>
-                            <blockquote> Patient </blockquote>
+                            <blockquote> Doctor </blockquote>
                         </section>
                     </div>
                 <?php }?>
             </div>
         </div>
         <div class="column-right">
+            <div class="now-chatname"> Talking to <?php echo $doctor_name; ?></div>
             <div class="chat-box" id="showData">
-
             </div>
             <div class="chat-input">
                 <form action="" id="myMessage" method="post">
                     <div class ="phone-video">
-                        <img class = "phone" src="<?php echo base_url() ?>assets/images/phone.png" alt="phone">
                         <a href="https://doctor-chitchat.herokuapp.com" target="_blank">
-                        <img class = "video" src="<?php echo base_url() ?>assets/images/video.png" alt="video">
+                        <img title ="video call" class = "video" src="<?php echo base_url() ?>assets/images/video.png" alt="video">
                         </a>
                     </div>
                     <div class="input-button">
@@ -74,6 +105,8 @@
                 </form>
             </div>
         </div>
+        
+  
         <script>
             $(function(){
                 showAllMessage();
@@ -149,9 +182,26 @@
                 }
 
             });
-
         </script>
         </div>
+        <script>
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+            }
+        }
+        }
+    </script>
 </body>
 
 </html>

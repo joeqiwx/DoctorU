@@ -135,8 +135,9 @@ article{
     padding-bottom: 15px;
     background-color: #F2F2F2;
     border-radius: 10px;
-
 }
+
+
 </style>
 
 	<script>
@@ -233,8 +234,7 @@ article{
 <body>
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
-    <p class="title"><b>Joe's Treatment plan</p>
-    <button>ENG</button>
+    <p class="title"><b><?php print_r($this->session->userdata($this->session->userdata['logged_in_doctor']['username']))?>'s plan</p>
     </div>
     <article>
     <div class="left-div">
@@ -257,6 +257,7 @@ article{
 	        <div id="calendar"></div>
         </div>
     </div>
+    
     </article>
     
 

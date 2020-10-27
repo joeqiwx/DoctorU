@@ -1,25 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Checker extends CI_Controller {
+class Home extends CI_Controller {
 
     function __construct(){
         parent:: __construct();
 		$this->load->helper('url');
         $this->load->library('session');
-        $this->load->model('symptoms');
     }
 
     public function index(){
         $this->load->view('users/nav');
-        $this->load->view('users/sympton-checker');
+        $this->load->view('users/homePage');
         
     }
-
-    public function result($symptomName){
-        $result = $this->symptoms->showSymptoms($symptomName);
-        echo json_encode($result);
-    }
-
-
 }

@@ -23,16 +23,14 @@ class Users extends CI_Controller {
     public function login(){
        $this->form_validation->set_rules('email', 'Email', 'required');
        $this->form_validation->set_rules('password', 'Password', 'required');
-
+       $this->load->library('encryption');
        if ($this->form_validation->run() == false) {
             $this->load->view('users/login');
        } else {
-        $this->load->library('encryption');
             $data = array(
                 'email' => $this->input->post('email'),
                 'password' => $this->input->post('password'),
             );
-            $p = $this->encryption->decrypt($this->input->post('password'));
 
             $result = $this->UserDatabase->login($data);
             if($result == true) {
@@ -47,15 +45,12 @@ class Users extends CI_Controller {
                     $type = $this->UserDatabase->userType($data);
                     if($type == true) {
                         $this->load->library('session');
-                        // $this->session->set_userdata('logged_in', $session_data);
                         $this->session->set_userdata('logged_in_doctor', $session_data);
                         $this->load->view('users/dhome');
                     } else {
-                        //$this->load->library('session');
-                       // $this->session->set_userdata('logged_in', $session_data);
-                       
                         $this->load->library('session');
                         $this->session->set_userdata('logged_in', $session_data);
+                        $this->load->view('users/nav');
                         $this->load->view('users/homePage');
                     }
             }
@@ -63,7 +58,6 @@ class Users extends CI_Controller {
                 $data = array (
                     'error_message'=>'Invalid Email or Password',
                 );
-                print_r("dsda");
                 $this->load->view('users/login', $data);
             }
         
@@ -94,12 +88,9 @@ class Users extends CI_Controller {
                     $data = array(
                         'username' => $this->input->post('username'),
                         'email' => $this->input->post('email'),
-                        //'password'=>$this->encryption->encrypt($this->input->post('password'))
-                       'password' => $this->input->post('password'),
+                        'password'=>$this->encryption->encrypt($this->input->post('password'))
+                    //    'password' => $this->input->post('password'),
                     );
-                
-                //$result = $this->UserDatabase->registration($data);
-                //if ($result == true) {
                     if($this->input->post('password') == $this->input->post('conpassword')) {
                         $result = $this->UserDatabase->registration($data);
                         if ($result == true) {
@@ -111,11 +102,9 @@ class Users extends CI_Controller {
                                 $this->load->view('users/registration', $data);
                             }
                         } else {
-                                $data['message_display'] = 'Email already exist!';
+                                $data['message_display'] = 'Email or Username already exist!';
                                 $this->load->view('users/registration', $data);
                             }
-                            // $data['message_display'] = 'Registration Successfully !';
-                            // $this->load->view('users/login',$data);
                     } else {
                         $data['message_display'] = 'Password not match !';
                         $this->load->view('users/registration', $data);
@@ -171,10 +160,6 @@ class Users extends CI_Controller {
 
     public function homePage(){
         $this->load->view('users/homePage');
-    }
-
-    public function diagnosis(){
-        $this->load->view('users/diagnosis');
     }
 
     public function profile(){

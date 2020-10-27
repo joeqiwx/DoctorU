@@ -20,6 +20,10 @@
     margin: 0;
 }
 
+.fc-day-grid-event > .fc-content {
+    white-space: normal;
+}
+
 body {
     background: #2174f8;
     text-decoration: none;
@@ -35,7 +39,7 @@ body {
 
 .title{
     margin-top: 15px;
-    width: 70%;
+    width: 90%;
 }
 .top img{
     width: 160px;
@@ -66,10 +70,6 @@ button {
 }
 
 .left-div {
-    /* display: block;
-    position: relative;
-    top: 10vh; */
-    /* width: 200px; */
     display: flex;
     flex-direction: column;
     width: 15%;
@@ -138,6 +138,48 @@ article{
     border-radius: 10px;
 
 }
+
+#popLayer {
+    padding-top:10px;
+    z-index: 21;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -250px;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #f7f7f7;
+    text-align: center;
+    border-style:solid;
+    border-width: 2px;
+    color: #0F0E0E;
+}
+.pop-title{
+    font-size: 20px;
+	line-height: 37px;
+	font-weight:bold;
+}
+.pop-content{
+	margin-left: 10px;
+	margin-right:10px;
+    text-align: left;
+
+}
+#ok-btn{
+    background-color: #157EE6; 
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    margin-top:20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+	cursor: pointer;
+	margin-right: 200px;
+}
 </style>
 
 	<script>
@@ -154,6 +196,7 @@ article{
 					right:'month,agendaWeek,agendaDay,listWeek'
 				},
 				events:"<?php echo base_url();?>appointment/load",
+                element:"a",
 				selectable:true,
 				selectHelper:true,
 				select:function (start, end, allDay) {
@@ -209,24 +252,49 @@ article{
 
 
 				},
+                    eventClick: function popWindows(event) { 
+			            var popLayer = document.getElementById("popLayer");
+			            popLayer.style.display = "block";
+                        var title = event.title;
+                        var patientName = title.split(" ").pop();
+                        $.ajax({
+                            url:"<?php echo base_url(); ?>appointment/load_pInfor",
+                            type:"POST",
+                            data:{pName:patientName},
+                            success: function(msg) {
+                                var pInfo = $.parseJSON(msg);
+                                console.log(pInfo);
+                                console.log(pInfo[0].age);
+                                $("#pName").append(patientName);
+                                $("#tTime").append($.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss"));
+                                $("#pAge").append(pInfo[0].age);
+                                $("#pHistory").append(pInfo[0].medicalHistory);
+                                $("#pAllergy").append(pInfo[0].allergy);
+                                $("#pEmail").append(pInfo[0].email);
 
-					eventClick:function (event) {
-						if(confirm("Remove it?")){
-							var id = event.id;
-							$.ajax({
-								url:"<?php echo base_url(); ?>appointment/delete",
-								type:"POST",
-								data: {id:id},
-								success: function () {
-									calendar.fullCalendar('refetchEvents');
-									alert("Remove successfully.");
-								}
-							})
-						}
-					}
+                            }
+                        });
+		                }
 			}
 			)
 		})
+
+		function closeWindows() {
+                var popLayer = document.getElementById("popLayer");
+                popLayer.style.display = "none";
+                $("#pName").empty();
+                $("#pName").append("Patient Name: ");
+                $("#tTime").empty();
+                $("#tTime").append("Treatment Time: ");
+                $("#pAge").empty();
+                $("#pAge").append("Age: ");
+                $("#pHistory").empty();
+                $("#pHistory").append("Medical History: ");
+                $("#pEmail").empty();
+                $("#pEmail").append("Email: ");
+                $("#pAllergy").empty();
+                $("#pAllergy").append("Allergy: ");
+            }
 
 	</script>
 
@@ -235,7 +303,6 @@ article{
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title"><b>Appointment</p>
-    <button>ENG</button>
     </div>
     <article>
     <div class="left-div">
@@ -257,6 +324,22 @@ article{
         <div class="container">
 	        <div id="calendar"></div>
         </div>
+    </div>
+        <div id="popLayer" style="display:none">
+            <!-- content of the windows -->
+            <div class="pop-title">Appointment Detail</div>
+            <div class="pop-content">
+                <div id="pName"> Patient Name: </div>
+                <div id="tTime"> Treatment Time :</div>
+                <div id="pAge"> Age :</div>
+                <div id="pHistory"> Medical History :</div>
+                <div id="pAllergy"> Allergy :</div>
+                <div id="pEmail"> Email :</div>
+                <div id="pLocation">Location: PA Hospital</div>
+            </div>
+
+
+            <button id="ok-btn" onclick=closeWindows() >Close </button>
     </div>
     </article>
     

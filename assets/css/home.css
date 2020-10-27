@@ -1,0 +1,38 @@
+.blocks {
+    position: relative;
+    width: 30%;
+    left: 55vw;
+    top: 10vh;
+}
+
+.function {
+    float: left;
+    background-color: #157EE6; 
+    width: 25vw;
+    border-top-left-radius: 17px;
+    border-bottom-right-radius: 17px;
+    border: none;
+    color: white;
+    padding: 35px 52px 25px 35px;
+    margin: 2vh 0;
+    font-size: 25px;
+    cursor: pointer;
+    box-shadow: 10px 10px rgba(204, 202, 202, 0.692);
+}
+
+.fas {
+    float: left;
+    padding-right: 3vw;
+    padding-top: 1vh;
+    font-size: 40px;
+}
+
+.blocks p {
+    float: left;
+}
+img {
+    width: 45%;
+    position: relative;
+    left: -25vw;
+    top: 10vh;
+}
