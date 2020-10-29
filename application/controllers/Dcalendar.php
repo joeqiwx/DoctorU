@@ -1,4 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * 1. help data transation from webpagg to dataset
+ */
 class Dcalendar extends  CI_Controller{
 	public function __construct(){
 		parent:: __construct();
@@ -13,6 +16,7 @@ class Dcalendar extends  CI_Controller{
 		$this->load->view('users/dcalendar');
 	}
 
+	// get the data from dataset by User_callendar model
 	function load(){
 		$doctorName = $this->session->userdata['logged_in_doctor']['username'];
 		$event_data = $this->user_calendar_model->fetch_all_event($this->session->userdata($doctorName));
@@ -27,6 +31,7 @@ class Dcalendar extends  CI_Controller{
 		echo json_encode($data);
 	}
 
+	// get the data from view(webpage) and then insert it to dataset by model function
 	function insert(){
 		$doctorName = $this->session->userdata['logged_in_doctor']['username'];
 		if($this->input->post('title')){
@@ -40,6 +45,7 @@ class Dcalendar extends  CI_Controller{
 		}
 	}
 
+	// get the data from view(webpage) and then update it to dataset by model function
 	function update(){
 		if($this->input->post('id')) {
 			$data = array(
@@ -51,6 +57,7 @@ class Dcalendar extends  CI_Controller{
 		}
 	}
 
+	// get the data from view(webpage) and then delete it to dataset by model function
 	function delete(){
 		if($this->input->post('id')) {
 			$this->user_calendar_model->delete_event($this->input->post('id'));

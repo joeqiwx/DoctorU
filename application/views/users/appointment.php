@@ -183,6 +183,7 @@ article{
 </style>
 
 	<script>
+        // initialization calendar
 		$(document).ready(function(){
 			var calendar = $('#calendar').fullCalendar({
                 height: 600,
@@ -195,10 +196,11 @@ article{
 					center:'title',
 					right:'month,agendaWeek,agendaDay,listWeek'
 				},
+                // load data from controller Dcalend.php's load function
 				events:"<?php echo base_url();?>appointment/load",
-                element:"a",
 				selectable:true,
 				selectHelper:true,
+                //Add event function
 				select:function (start, end, allDay) {
 					var title = prompt("Please enter event title.");
 					if(title){
@@ -216,14 +218,15 @@ article{
 						})
 					}
 				},
+                editable:true,
 
-
-				editable:true,
+                //Resize the time function
 				eventResize:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+                    // send the update data to controller
 					$.ajax({
 						url: "<?php echo base_url(); ?>appointment/update",
 						type: "POST",
@@ -233,13 +236,15 @@ article{
 							alert("Update successfully.");
 						}
 					})
-				},
+                },
 
+                //Drop event function
 				eventDrop:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+                    // send the update throught ajax
 					$.ajax({
 						url: "<?php echo base_url(); ?>appointment/update",
 						type: "POST",
@@ -252,11 +257,13 @@ article{
 
 
 				},
+                    // click event to show the event detial through popup windows
                     eventClick: function popWindows(event) { 
 			            var popLayer = document.getElementById("popLayer");
 			            popLayer.style.display = "block";
                         var title = event.title;
                         var patientName = title.split(" ").pop();
+                        // send and get patient information with controller
                         $.ajax({
                             url:"<?php echo base_url(); ?>appointment/load_pInfor",
                             type:"POST",
@@ -279,6 +286,7 @@ article{
 			)
 		})
 
+        // close popup window
 		function closeWindows() {
                 var popLayer = document.getElementById("popLayer");
                 popLayer.style.display = "none";
@@ -300,6 +308,7 @@ article{
 
 </head>
 <body>
+<!-- navigation bar -->
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title"><b>Appointment</p>
@@ -321,6 +330,7 @@ article{
         </div>
     <div class ="content">
         </br>
+        <!-- appointment information calendar -->
         <div class="container">
 	        <div id="calendar"></div>
         </div>

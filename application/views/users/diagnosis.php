@@ -26,17 +26,20 @@
     <div id="nav-placeholder">
     </div>
     
+    <!-- The brief introduction of the symptom checker -->
     <div class="intro-container">
         <div class="dig-title">Diagnosis</div>
         <div class="dig-text"> By clicking on the common symptoms or disease categories listed in the hive, you can get medical consultation service 
         from qualified general practitioners or specialists via text and video chat. </div>
         <div class="dig-text">If you just feel uncomfortable but your symptom is not listed in the hive, you can click the symptom check button below
          to screen for possible causes, then chat withrelevant doctors.</div>
-        </div>
+    </div>
     
     <div class="check">
         <button onclick="window.location.href='<?php echo base_url('checker');?>'">Symptom Check ></button>
     </div>
+
+    <!-- The honey images for the diagnosis page -->
     <div class="honey">
         <a href="<?php echo base_url('Chat/matchingDoctor');?>">
         <img src="<?php echo base_url(); ?>assets/images/ch.png" alt="" class="one" 

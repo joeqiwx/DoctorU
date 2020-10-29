@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 1. Display the content of the chat in doctor side
+ * 2. Add the new message to the database
+ */
+
 class Dchat extends CI_Controller {
 
     function __construct(){
@@ -12,18 +17,22 @@ class Dchat extends CI_Controller {
         $this->load->model('relation');
     }
 
+    /**
+     * 1. An entry of the other function
+     */
     public function index(){
         $userId = $this->getUserId();
         if ($this->relation->hasFriend($userId)) {
             $patientId = $this->relation->getFirstFriend($userId);
             redirect('Dchat/haveChat/'.$userId.'/'.$patientId);
-//            print_r("yes");
         }else {
             $this->load->view('users/doctor_no_match');
-//            print_r("no");
         }
     }
 
+    /**
+     * 1. Chat to specific patient
+     */
     public function haveChat($userId, $patientId){
         $relationList['user_id'] = $userId;
         $relationList['patient_id'] = $patientId;
@@ -32,7 +41,9 @@ class Dchat extends CI_Controller {
         $relationList['friends'] = $this->relation->getFriends($userId);
         $this->load->view('users/doctor_chat',$relationList);
     }
-
+    /**
+     * 1. Get the doctor id from the database
+     */
     public function getUserId() {
         $user_sess = $this->session->userdata('logged_in_doctor');
         $user_email = $user_sess['email'];
@@ -41,11 +52,17 @@ class Dchat extends CI_Controller {
         return $userId;
     }
 
+    /**
+     * 1. Get the message from database and then parse to the front-end
+     */
     public function showAllMessage($user_id, $patient_id){
         $result = $this->message->showAllMessage($user_id, $patient_id);
         echo json_encode($result);
     }
 
+    /**
+     * 1. Add the new message to the database
+     */
     public function addMessage($sender_name, $receiver_name, $sender_id, $receiver_id){
         $result = $this->message->doctorAddMessage($sender_name, $receiver_name, $sender_id, $receiver_id);
         $msg['success'] = false;
@@ -56,7 +73,9 @@ class Dchat extends CI_Controller {
         echo json_encode($msg);
     }
 
-    // Obtain the current user name and the doctor name
+    /**
+     * 1. Get the user name from the database
+     */
     public function getUserName($userId) {
         $userNameArray = $this->relation->getUserName($userId);
         $userName = $userNameArray[0];

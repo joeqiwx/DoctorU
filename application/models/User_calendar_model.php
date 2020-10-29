@@ -1,9 +1,9 @@
 <?php
-
-
+/**
+ * 1.This Model for load,insert,update,deletle data with datebase
+ */
 class User_calendar_model extends CI_Model {
 	function fetch_all_event($user){
-		// $this->db->where('')
 		$this->db->order_by('id');
 		$this->db->where('user',$user);
 		return $this->db->get('events');

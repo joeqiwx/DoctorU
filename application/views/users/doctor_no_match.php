@@ -42,7 +42,8 @@
 </head>
 <body>
 <div id="popLayer">
-    <!-- content of the windows -->
+
+    <!-- Content of the pop up windows -->
     <div class="content">
         You don't have any patient!
     </div>

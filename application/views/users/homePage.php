@@ -22,6 +22,8 @@
     <div id="nav-placeholder">
         <div w3-include-html="nav.html"></div>
     </div>
+
+    <!-- The navigation bar of the home page for doctor side -->
     <div class="blocks">
         <div class="function" onclick="window.location.href='<?php echo base_url('Ddiagnosis'); ?>'"><i class="fas fa-user-md"></i>
             <p>Diagnosis</p>
@@ -37,8 +39,6 @@
         </div>
     </div>
     <div class="container"><img src="<?php echo base_url(); ?>assets/images/background.jpg" alt=""></div>
-    <!-- <p>Translate this page:</p>
-    <div id="google_translate_element"></div> -->
 
 <script type="text/javascript">
 function googleTranslateElementInit() {

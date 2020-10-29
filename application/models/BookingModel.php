@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * 1. This model is used to get doctor information from 'doctor' and 'doctorLanguage' 
+ * from data set
+ */
 class BookingModel extends CI_Model{
 
 	function fetch_data($language, $dept){

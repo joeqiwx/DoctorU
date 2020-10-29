@@ -141,6 +141,8 @@ article{
 </style>
 
 	<script>
+    
+        // initialization doctor side home page 
 		$(document).ready(function(){
 			var calendar = $('#calendar').fullCalendar({
                 defaultView: 'listMonth',
@@ -156,7 +158,8 @@ article{
 				},
 				events:"<?php echo base_url();?>appointment/load",
 				selectable:true,
-				selectHelper:true,
+                selectHelper:true,
+                // load appointment event through controller
 				select:function (start, end, allDay) {
 					var title = prompt("Please enter event title.");
 					if(title){
@@ -174,42 +177,6 @@ article{
 						})
 					}
 				},
-
-
-				editable:true,
-				eventResize:function (event) {
-					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-					var title = event.title;
-					var id = event.id;
-					$.ajax({
-						url: "<?php echo base_url(); ?>appointment/update",
-						type: "POST",
-						data: {title: title, start: start, end: end, id: id},
-						success: function () {
-							calendar.fullCalendar('refetchEvents');
-							alert("Update successfully.");
-						}
-					})
-				},
-
-				eventDrop:function (event) {
-					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-					var title = event.title;
-					var id = event.id;
-					$.ajax({
-						url: "<?php echo base_url(); ?>appointment/update",
-						type: "POST",
-						data: {title: title, start: start, end: end, id: id},
-						success: function () {
-							calendar.fullCalendar('refetchEvents');
-							alert("Update successfully.");
-						}
-					})
-
-
-				},
 			}
 			)
 		})
@@ -218,6 +185,7 @@ article{
 
 </head>
 <body>
+<!-- Navigation bar   -->
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title"><b>Appointment</p>
@@ -239,6 +207,7 @@ article{
         </div>
     <div class ="content">
         </br>
+        <!-- apoointment list in home page  -->
         <div class="container">
 	        <div id="calendar"></div>
         </div>

@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * 1. Load the "information table" from the database, 
+ * the "information table " stores the chat log between doctor and patient
+ * 2. Search the chat content from the database
+ * 3. Add the new chat content to the database
+ */
 class Message extends CI_Model{
     function __construct() {
         $this->load->database();
@@ -8,6 +13,9 @@ class Message extends CI_Model{
         $this->table = 'information';
     }
 
+    /**
+     * 1. Search the chat log from the specific doctor-patient relation
+     */
     public function showAllMessage($user_id, $doctor_id){
 
         $sql = "SELECT * from information 
@@ -23,6 +31,9 @@ class Message extends CI_Model{
         }
     }
 
+    /**
+     * 1. Add the chat content into the "information table" in patient side
+     */
     public function addMessage($sender_name, $receiver_name, $sender_id, $receiver_id){
         $field = array(
             'message'=>$this->input->post('chat-input'),
@@ -42,6 +53,9 @@ class Message extends CI_Model{
         }
     }
 
+    /**
+     * 1. Add the chat content into the "information table" in doctor side
+     */
     public function doctorAddMessage($sender_name, $receiver_name, $sender_id, $receiver_id){
         $field = array(
             'message'=>$this->input->post('chat-input'),

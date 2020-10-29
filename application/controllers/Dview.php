@@ -1,4 +1,7 @@
 <?php
+/**
+ * 1.Controller for data transmation between dataset and webpage
+ */
 class Dview extends CI_Controller {
     public function __construct(){
 		parent:: __construct();
@@ -12,6 +15,7 @@ class Dview extends CI_Controller {
     public function index(){
         $this->load->view('users/dview');
 	}
+	// fetch the data according to search bar in webpage
 	function fetch(){
 		$this->load->database();
 		$output='';

@@ -1,4 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * 1. Controller, help data transmition between dataset and webpage
+ */
 class User_calendar extends  CI_Controller{
 	public function __construct(){
 		parent:: __construct();
@@ -10,10 +13,10 @@ class User_calendar extends  CI_Controller{
 	}
 
 	function index(){
-		// $this->load->view('users/nav');
 		$this->load->view('users/user_calendar');
 	}
 
+	// load the event data from dataset by model
 	function load(){
 		$event_data = $this->user_calendar_model->fetch_all_event($this->session->userdata['logged_in']['username']);
 		foreach ($event_data->result_array() as $event_row){
@@ -27,6 +30,7 @@ class User_calendar extends  CI_Controller{
 		echo json_encode($data);
 	}
 
+	// insert the data to dataset which from webpage
 	function insert(){
 		if($this->input->post('title')){
 
@@ -40,6 +44,7 @@ class User_calendar extends  CI_Controller{
 		}
 	}
 
+	// get data from webpage, and update event data to dataset
 	function update(){
 		if($this->input->post('id')) {
 			$data = array(
@@ -51,6 +56,7 @@ class User_calendar extends  CI_Controller{
 		}
 	}
 
+	// delete data from dataset
 	function delete(){
 		if($this->input->post('id')) {
 			$this->user_calendar_model->delete_event($this->input->post('id'));

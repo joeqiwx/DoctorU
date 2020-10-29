@@ -41,6 +41,7 @@
 
 <body>
     
+	<!-- The progress bar of the diagnosis -->
     <div class="progress-bar">
 		<div class="title-1" id="title-1">
             <div class="subtitle">
@@ -78,6 +79,7 @@
         </div>
     </div>
 	
+	<!-- The content of the first diagnosis choices -->
 	<div class="main">
 		<div class="information">
 			<div class="section">
@@ -113,6 +115,8 @@
 				<button class="next-btn" id="next-btn" onclick="infoNext();" value="">Continue</button>
 			</div>
 		</div>
+
+		<!-- The content of the second diagnosis choices -->
 		<form action="" method="post" class="symptoms">
 			<div class="left-checkboxes">
 				<input type="checkbox" id="choking" name="Choking" value="choking">
@@ -149,9 +153,11 @@
 			</div>
 		</form>
 
+		<!-- The box to display the diagnosis result -->
 		<div class="causes">
 		</div>
 		
+		<!-- The box to display the symptom description after diagnosis -->
 		<div class="description">
 			<p class="description-heading"></p>
 			<div class="description-section">
@@ -208,6 +214,9 @@
 	$('.causes').remove();
 	$('.description').remove();
 	
+	/**
+		1. Display the next part of the contents
+	 */
 	function infoNext() {
 		age = document.getElementById('age').value;
 		gender = document.getElementById('gender').value
@@ -227,6 +236,9 @@
 		$('.main').append(symptomsDiv);
 	}
 	
+	/**
+		1. Display the next part of the contents
+	 */
 	function symptomsNext() {
 		// Options
 		choking = document.getElementById('choking');
@@ -296,6 +308,10 @@
 		}
 	}
 	
+	/**
+		1. Use AJAX to get the symptom description 
+		from the data base in real-time
+	 */
 	function causesNext(sym) {
 		
 		// for different symptoms

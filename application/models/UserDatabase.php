@@ -1,4 +1,7 @@
 <?php
+/**
+ * 1. Database model for user login and sign up
+ */
 class UserDatabase extends CI_Model {
 	public function __construct() {
 		$this->load->library('encryption');

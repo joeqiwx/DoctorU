@@ -15,7 +15,7 @@
     </head>
 <body>
 <div id="google_translate_element"></div>
-
+<!-- progress bar -->
     <div class="progress-bar" id="progress-bar">
 
         <div class="title-1" id="title-1">
@@ -57,6 +57,7 @@
     </div>
     <div class="main">
         <div class="department-page"id="department-page"  >
+        <!-- department page -->
             <div class="departemnt-title"> please choose a medical department:</div>
             <div class="departemnt-content">
                 <div class="column" id="departmentChoose" value="">
@@ -104,6 +105,7 @@
             </div>
         
             <div class="distance-language-page" id="distance-language-page" style="display:none">
+            <!-- distance-language-page -->
                 <div class="dl-content">
                     <div class="distance">
                         <div class="distance-title" id="distanceChoose" value=""> Please choose the distance range:</div>
@@ -150,6 +152,7 @@
             </div>
         </div>
         <div class="date-time-page" id="date-time-page" style="display:none" >
+        <!-- date-time-page-->
             <div class="date-time-content">
                 <div class="date-column">
                     <div class="date-title" id="dateChoose" value="" > Please choose the appointment date:</div>
@@ -208,6 +211,7 @@
             </div>            
         </div>
         <div class="doctor-page" id="doctor-page" style="display:none">
+        <!-- doctor-page -->
             <div class="doctor" id="doctor" >
                 <div class="doctor-title"> Please choose the doctor:</div>
                     <div class="content">
@@ -256,6 +260,7 @@
         </div>
     </div>
     <div class="check-page" id="check-page" style="display:none">
+    <!-- check-page -->
         <div class="check">
             <div class="check-title"> Please check and confirm your booking information:</div>
             <div class="check-info">
@@ -286,18 +291,22 @@
 <script>
     let bookingInfo = {dept:"", distance:"", languages:"", bookingDate:"", bookingTime:""};
     let dInfo = {};
+    // change the department page button color
     function changeColor() {
         var departmentBtn = document.getElementById("contiue-btn");
         departmentBtn.style.background = "#157EE6";
     }
+    // change the Language page button color
     function changeLanguageBtn() {
         var languageBtn = document.getElementById("l-btn");
         languageBtn.style.background = "#157EE6";
     }
+    // change the Time page button color
     function changeTimeBtn() {
         var timeBtn = document.getElementById("time-btn");
         timeBtn.style.background = "#157EE6";
     }
+    //record department page message, switch to distance and language page
     function departContinue(){
         var choosed = document.getElementsByClassName("department");
         var hasChoosed = false;
@@ -320,6 +329,7 @@
         document.getElementById("title-2").style.display="block";
         document.getElementById("distance-language-page").style.display="block";
     }
+    //check whether user choose option and switch to date time page page
     function dlContinue(){
         var choosed = document.getElementsByClassName("distance");
         var secondChoosed = document.getElementsByClassName("language");
@@ -356,12 +366,14 @@
         document.getElementById("title-3").style.display="block";
         document.getElementById("date-time-page").style.display="block";
     }
+    //switch to department page 
     function dllastContinue(){
         document.getElementById("title-1").style.display="block";
         document.getElementById("department-page").style.display="block";
         document.getElementById("title-2").style.display="none";
         document.getElementById("distance-language-page").style.display="none";
     }
+    //record the date and time, select suitable doctor, switch to doctor page
     function dtContinue(){        
         var choosed = document.getElementsByClassName("dateValue");
         var hasChoosed = false;
@@ -418,29 +430,34 @@
         document.getElementById("title-3").style.display="none";
         document.getElementById("date-time-page").style.display="none";
     }
+    //switch to distance language page
     function dtlastContinue(){
         document.getElementById("title-3").style.display="none";
         document.getElementById("date-time-page").style.display="none";
         document.getElementById("title-2").style.display="block";
         document.getElementById("distance-language-page").style.display="block";
     }
+    //switch to date time page
     function doctorLast(){
         document.getElementById("title-3").style.display="block";
         document.getElementById("date-time-page").style.display="block";
         document.getElementById("title-4").style.display="none";
         document.getElementById("doctor-page").style.display="none";
     }
+    //switch to check page
     function doctorContinue(){
         document.getElementById("progress-bar").style.display="none";
         document.getElementById("doctor-page").style.display="none";
         document.getElementById("check-page").style.display="block";
     }
+     //switch to doctor page
     function checkLast(){
         document.getElementById("progress-bar").style.display="block";
         document.getElementById("doctor-page").style.display="block";
         document.getElementById("check-page").style.display="none";
     } 
 
+    //send email to user
     function checkConfirm() {
         $.ajax({
             url:"<?php echo base_url(); ?>Booking/sendEmail",
@@ -452,7 +469,7 @@
             }           
         });
     };
-
+    // close the pop windows
     function closeWindows() {
         var popLayer = document.getElementById("popLayer");
         popLayer.style.display = "none";

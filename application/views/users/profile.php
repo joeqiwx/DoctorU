@@ -20,6 +20,8 @@ if (isset($this->session->userdata['logged_in'])) {
 </head>
 
 <body>
+
+    <!-- The navigation bar of the patient side -->
     <ul>
     <?php if (isset($this->session->userdata['logged_in'])) {
         $username = ($this->session->userdata['logged_in']['username']);?>
@@ -33,6 +35,8 @@ if (isset($this->session->userdata['logged_in'])) {
         <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
         <li><a class="nav" href="<?php echo base_url('Home'); ?>">Home</a></li>
     </ul>
+
+    <!-- The detail of the patient profile -->
     <div class="profile-box">
         <div class="section">
             <div class="heading">Username</div>
@@ -67,6 +71,9 @@ if (isset($this->session->userdata['logged_in'])) {
     <script>
     var beingEdited = false;
     
+    /**
+        1. Disable/Enable the button
+     */
     function enableEdit() {
         if (beingEdited) {
             disable();
@@ -77,6 +84,9 @@ if (isset($this->session->userdata['logged_in'])) {
         }
     }
     
+    /**
+        1. Set the event of the go back button
+     */
     function backConfirm() {
         var x = confirm("Your change won't be saved!");
         if (x) {
@@ -86,6 +96,9 @@ if (isset($this->session->userdata['logged_in'])) {
         }
     }
     
+    /**
+        1. Enable the edit button
+     */
     function enable() {
         document.getElementById('edit-update-btn').innerHTML = "Update";
         document.getElementById('username').removeAttribute("disabled");
@@ -97,6 +110,9 @@ if (isset($this->session->userdata['logged_in'])) {
         document.getElementById('back-btn').style.display = "inline-block";
     }
     
+    /**
+        1. Disable the edit button
+     */
     function disable() {
         document.getElementById('edit-update-btn').innerHTML = "Edit";
         document.getElementById('username').setAttribute("disabled", true);
@@ -108,6 +124,10 @@ if (isset($this->session->userdata['logged_in'])) {
         document.getElementById('back-btn').style.display = "none";
     }
     
+
+    /**
+        1. clear the user information
+     */
     function clearText() {
         document.getElementById('username').value = "";
         document.getElementById('email').value = "";

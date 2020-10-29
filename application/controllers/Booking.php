@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 1.Booking controler, help data transation between webpage and dataset
+ */
 class Booking extends CI_Controller {
     function __construct() {
 		parent:: __construct();
@@ -15,7 +17,8 @@ class Booking extends CI_Controller {
 		$this->load->view('users/nav');
 		$this->load->view('users/booking');
     }
-    
+	
+	// send the email with booking detial to user 
     function sendEmail()
 	{   
         $username = $this->session->userdata['logged_in']['username'];
@@ -63,6 +66,7 @@ class Booking extends CI_Controller {
 
 	}
 
+	//  Get the information about doctor and patient from dataset
 	function fetch()
 	{
 		$dept = $this->input->post('dept');

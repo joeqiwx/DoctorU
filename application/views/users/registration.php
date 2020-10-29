@@ -13,26 +13,15 @@
 <body>
 
 <?php echo form_open('users/registration'); ?>
+	
+	<!-- Main content of the registration page -->
 	<div class="login-back"></div>
-	<div class="clearfix">
-		<div class="pull-left login">
-			<!-- <img src="<?php echo base_url(); ?>assets/images/logo.png"> -->
-		</div>
-		<div class="pull-right right-top">
-			<div class="dropdown">
-			  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    ENG
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dLabel">
-			    <li><a href="">CHINESE</a></li>
-			  </ul>
-			</div>
-		</div>
-	</div>
 	<div class="clearfix">
 		<div class="login-left pull-left">
 			<div><img src="<?php echo base_url(); ?>assets/images/home.png"></div>
 		</div>
+
+		<!-- The main content of the input form for user typing their information -->
 		<div class="login-right pull-right">
 			<div class="login-box">
 			<?php echo validation_errors(); ?>
@@ -42,6 +31,8 @@
 					echo $message_display;
 				}
 				echo "</div>";?>
+
+				<!-- The input form for the users -->
 				<div class="login-txt">Username</div>
 				<input type="text" class="form-control icon01" placeholder="doctoru" name='username' id='username'>
 				<div class="login-txt">Email</div>
@@ -70,6 +61,11 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
 $(function(){
+
+/**
+	1. Automatically adjust the content 
+	size when the window size has changed
+ */
 var whdef = 100/1920;
 var wH = window.innerHeight;
 var wW = window.innerWidth;

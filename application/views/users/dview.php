@@ -59,10 +59,6 @@ button {
 }
 
 .left-div {
-    /* display: block;
-    position: relative;
-    top: 10vh; */
-    /* width: 200px; */
     display: flex;
     flex-direction: column;
     width: 15%;

@@ -1,4 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * 1. Render the home page of the doctor side
+ */
 class Dhome extends  CI_Controller{
 	public function __construct(){
 		parent:: __construct();

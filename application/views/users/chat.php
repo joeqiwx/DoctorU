@@ -45,6 +45,8 @@
 <div>
 
 </div>
+
+    <!-- navigation bar -->
     <ul>
         <div class="dropdown">
         <?php if (isset($this->session->userdata['logged_in'])) {
@@ -63,13 +65,16 @@
         <li><a class="nav" href="<?php echo base_url('Ddiagnosis'); ?>">Diagnosis</a></li>
         <li><a class="nav" href="<?php echo base_url('Booking'); ?>">Booking</a></li>
         <li><a class="nav" href="<?php echo base_url('Home'); ?>">Home</a></li>
-    </ul>   
+    </ul>
+        
+        <!-- main content of the chat box -->
         <div class="content">
         <div class="column-left">
             <div class="searchbox">
                 <input type="text" name="search" placeholder="search contact" >
             </div>
-
+            
+            <!-- The content of the users' friends that they want to chat -->
             <div class="chat-namelist">
                 <?php for($i = 0; $i < count($friends); $i++) {?>
                     <div class="chat-person" onclick="window.location.href='<?php echo base_url('Chat/haveChat/'.$user_id.'/'.$friends[$i]['friend_id']);?>'">
@@ -84,6 +89,8 @@
                 <?php }?>
             </div>
         </div>
+
+        <!-- The content of the chat log -->
         <div class="column-right">
             <div class="now-chatname"> Talking to <?php echo $doctor_name; ?></div>
             <div class="chat-box" id="showData">
@@ -108,6 +115,11 @@
         
   
         <script>
+
+            /**
+                1. Use the AJAX to display the chat log in real time in patient side
+                2. Sent the message after the "send" button was click
+             */
             $(function(){
                 showAllMessage();
                 setInterval(function(){
@@ -151,7 +163,10 @@
                     }
                 });
                 
-                //function
+                /**
+                    1. Get the chat content from the back-end 
+                    and then show in the div box in doctor side
+                 */
                 function showAllMessage(){
                     $.ajax({
                         type: 'ajax',

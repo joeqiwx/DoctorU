@@ -31,6 +31,8 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         <p class="name"><?php echo $username?></p>
         <?php }?>
     </figure>
+
+    <!-- Navigation bar of the doctor side -->
         <ul>
             <li><a class="left-nav" href="<?php echo base_url('dhome') ?>">Home</a></li>
             <li><a class="left-nav active" href="<?php echo base_url('Users/doctor_profile') ?>">Profile</a></li>
@@ -39,6 +41,8 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
             <li><a class="left-nav" href="<?php echo base_url('Dchat') ?>">Chat</a></li>
         </ul>
     </div>
+
+    <!-- The detail of the doctor profile -->
     <div class ="content">
 		<div class="section">
 			<div class="heading">Username</div>
@@ -81,6 +85,9 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
     <script>
     var beingEdited = false;
     
+    /**
+        1. Disable/Enable the button
+     */
     function enableEdit() {
         if (beingEdited) {
             disable();
@@ -91,6 +98,9 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         }
     }
     
+    /**
+        1. Set the event of the go back button
+     */
     function backConfirm() {
         var x = confirm("Your change won't be saved!");
         if (x) {
@@ -100,6 +110,9 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         }
     }
     
+    /**
+        1. Enable the edit button
+     */
     function enable() {
         document.getElementById('edit-update-btn').innerHTML = "Update";
         document.getElementById('username').removeAttribute("disabled");
@@ -112,6 +125,9 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         document.getElementById('back-btn').style.display = "inline-block";
     }
     
+    /**
+        1. Disable the edit button
+     */
     function disable() {
         document.getElementById('edit-update-btn').innerHTML = "Edit";
         document.getElementById('username').setAttribute("disabled", true);
@@ -124,6 +140,9 @@ if (isset($this->session->userdata['logged_in_doctor'])) {
         document.getElementById('back-btn').style.display = "none";
     }
     
+    /**
+        1. clear the user information
+     */
     function clearText() {
         document.getElementById('username').value = "";
         document.getElementById('email').value = "";

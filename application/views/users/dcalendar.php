@@ -141,6 +141,7 @@ article{
 </style>
 
 	<script>
+        // initialization calendar
 		$(document).ready(function(){
 			var calendar = $('#calendar').fullCalendar({
                 height: 600,
@@ -153,14 +154,17 @@ article{
 					center:'title',
 					right:'month,agendaWeek,agendaDay,listWeek'
 				},
+                // load data from controller Dcalend.php's load function
 				events:"<?php echo base_url();?>dcalendar/load",
 				selectable:true,
 				selectHelper:true,
+                //Add event function
 				select:function (start, end, allDay) {
 					var title = prompt("Please enter event title.");
 					if(title){
 						var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
 						var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                        //Send the insert data to controller
 						$.ajax({
 							url:"<?php echo base_url(); ?>dcalendar/insert",
 							type:"POST",
@@ -173,14 +177,15 @@ article{
 						})
 					}
 				},
-
-
 				editable:true,
+
+                //Resize the time function
 				eventResize:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+                    // send the update data to controller
 					$.ajax({
 						url: "<?php echo base_url(); ?>dcalendar/update",
 						type: "POST",
@@ -192,11 +197,13 @@ article{
 					})
 				},
 
+                //Drop event function
 				eventDrop:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+                    // send the update throught ajax
 					$.ajax({
 						url: "<?php echo base_url(); ?>dcalendar/update",
 						type: "POST",
@@ -210,9 +217,11 @@ article{
 
 				},
 
+                    // click event to delete event
 					eventClick:function (event) {
 						if(confirm("Remove it?")){
 							var id = event.id;
+                            // send delete data to controller
 							$.ajax({
 								url:"<?php echo base_url(); ?>dcalendar/delete",
 								type:"POST",
@@ -232,6 +241,7 @@ article{
 
 </head>
 <body>
+<!-- navigation bar -->
 <div class="top">
     <div class = "top-img"><img class="logo" src="<?php echo base_url() ?>assets/images/logoSquare.png"> </div>
     <p class="title"><b><?php print_r($this->session->userdata($this->session->userdata['logged_in_doctor']['username']))?>'s plan</p>
@@ -251,6 +261,7 @@ article{
 
         </ul>
         </div>
+    <!-- treatment plan calendar -->
     <div class ="content">
         </br>
         <div class="container">

@@ -51,7 +51,7 @@
 </head>
 <body>
 
-
+<!-- login bar -->
 <ul>
     <div class="dropdown">
     <?php if (isset($this->session->userdata['logged_in'])) {
@@ -92,6 +92,7 @@
 <br />
 <br />
 <br />
+<!-- user treatment calendar -->
 <div class="box">
 <div class="container">
 	<div id="calendar"></div>
@@ -118,6 +119,7 @@
     </div>
 </body>
 <script>
+        // initialization calendar
 		$(document).ready(function(){
 			var calendar = $('#calendar').fullCalendar({
 				themeSystem: 'bootstrap4',
@@ -127,15 +129,18 @@
 					center:'title',
 					right:'month,agendaWeek,agendaDay,listWeek'
 				},
+				// load event data from controller function
 				events:"<?php echo base_url();?>user_calendar/load",
 				customRender: true,
 				selectable:true,
 				selectHelper:true,
+				// add event function
 				select:function (start, end, allDay) {
 					var title = prompt("Please enter event title.");
 					if(title){
 						var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
 						var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+						// Send the insert data to controller
 						$.ajax({
 							url:"<?php echo base_url(); ?>user_calendar/insert",
 							type:"POST",
@@ -148,14 +153,15 @@
 						})
 					}
 				},
-
-
 				editable:true,
+
+				// Event resize function
 				eventResize:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+					// Send the update data to controller
 					$.ajax({
 						url: "<?php echo base_url(); ?>user_calendar/update",
 						type: "POST",
@@ -167,11 +173,13 @@
 					})
 				},
 
+                //Drop event function
 				eventDrop:function (event) {
 					var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 					var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 					var title = event.title;
 					var id = event.id;
+                    // send the update throught ajax
 					$.ajax({
 						url: "<?php echo base_url(); ?>user_calendar/update",
 						type: "POST",
@@ -185,9 +193,11 @@
 
 				},
 
+                    // click event to delete event
 					eventClick:function (event) {
 						if(confirm("Remove it?")){
 							var id = event.id;
+                            // send delete data to controller
 							$.ajax({
 								url:"<?php echo base_url(); ?>user_calendar/delete",
 								type:"POST",
@@ -200,6 +210,7 @@
 						}
 					},
  
+					// when hover to event and show detail
 					eventMouseover: function (event, $el) { 
 						var popLayer = document.getElementById("mouseOver");
 						popLayer.style.display = "block";
@@ -214,6 +225,7 @@
 						popLayer.style.top = top;
 					},
 
+					// when mouse move out close popup window
 					eventMouseout: function(event) {
 						var popLayer = document.getElementById("mouseOver");
 						popLayer.style.display = "none";
@@ -226,10 +238,12 @@
 			)
 		})
 		
+		// close poplayer
 		function closeWindows() {
                 var popLayer = document.getElementById("popLayer");
                 popLayer.style.display = "none";
-            }
+			}
+			// popup function
 		function popWindows() { 
 			var popLayer = document.getElementById("popLayer");
 			popLayer.style.display = "block";

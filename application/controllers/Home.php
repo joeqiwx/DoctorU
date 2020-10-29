@@ -1,5 +1,12 @@
 <?php
+/**
+ * Home page of DoctorU
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/**
+ * 1. Render the home page of the patient side
+ */
 
 class Home extends CI_Controller {
 

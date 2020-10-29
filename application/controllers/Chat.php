@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 1. Match the doctor if the patient didn't chat with 
+ * any doctor
+ * 2. Display the content of the chat in patient side
+ * 3. Add the new message to the database
+ */
+
 class Chat extends CI_Controller {
 
     function __construct(){
@@ -12,8 +19,10 @@ class Chat extends CI_Controller {
         $this->load->model('relation');
     }
 
+    /**
+     * 1. An entry of the other function
+     */
     public function index(){
-
         $userId = $this->getUserId();
         if ($this->relation->hasFriend($userId)) {
             $doctorId = $this->relation->getFirstFriend($userId);
@@ -23,6 +32,11 @@ class Chat extends CI_Controller {
         }
     }
 
+    /**
+     * 1. Randomly match the doctor
+     * 2. After matching, create the relation between specific doctor and patient
+     * and add it to the database
+     */
     public function matchingDoctor(){
         $userId = $this->getUserId();
         $doctorId = $this->matchDoctor();
@@ -52,6 +66,9 @@ class Chat extends CI_Controller {
         redirect('chat/haveChat/'.$userId.'/'.$doctorId);
     }
 
+    /**
+     * 1. Chat to specific doctor
+     */
     public function haveChat($userId, $doctorId){
         $relationList['user_id'] = $userId;
         $relationList['doctor_id'] = $doctorId;
@@ -61,11 +78,17 @@ class Chat extends CI_Controller {
         $this->load->view('users/chat',$relationList);
     }
 
+    /**
+     * 1. Get the message from database and then parse to the front-end
+     */
     public function showAllMessage($user_id, $doctor_id){
         $result = $this->message->showAllMessage($user_id, $doctor_id);
         echo json_encode($result);
     }
 
+    /**
+     * 1. Add the new message to the database
+     */
     public function addMessage($sender_name, $receiver_name, $sender_id, $receiver_id){
         $result = $this->message->addMessage($sender_name, $receiver_name, $sender_id, $receiver_id);
         $msg['success'] = false;
@@ -76,7 +99,9 @@ class Chat extends CI_Controller {
         echo json_encode($msg);
     }
 
-    // Obtain the random doctor id
+    /**
+     * 1. Obtain the random doctor id
+     */
     public function matchDoctor(){
         $doctorList = $this->relation->selectDoctor();
         $randomMatch = rand(0, count($doctorList) - 1);
@@ -84,7 +109,9 @@ class Chat extends CI_Controller {
         return $selectedDoctor['userid'];
     }
 
-    // Obtain the current user id according to their email stored in session
+    /**
+     * 1. Obtain the current user id according to their email stored in session
+     */
     public function getUserId() {
         $user_sess = $this->session->userdata('logged_in');
         $user_email = $user_sess['email'];
@@ -93,7 +120,9 @@ class Chat extends CI_Controller {
         return $userId;
     }
 
-    // Obtain the current user name and the doctor name
+    /**
+     * 1. Obtain the current user name and the doctor name
+     */
     public function getUserName($userId) {
         $userNameArray = $this->relation->getUserName($userId);
         $userName = $userNameArray[0];

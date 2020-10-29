@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * 1. Render the navigation page for all the web pages
+ */
 class Nav extends CI_Controller {
 
     public function __construct() {

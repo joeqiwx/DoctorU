@@ -19,9 +19,6 @@
 		</div>
 		<div class="pull-right right-top">
 			<div class="dropdown">
-			  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    ENG
-			  </button>
 			  <ul class="dropdown-menu" aria-labelledby="dLabel">
 			    <li><a href="">CHINESE</a></li>
 			  </ul>
@@ -51,6 +48,11 @@
 <script src="<?php echo base_url(); ?>assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script>
+
+/**
+	1. Automatically adjust the content 
+	size when the window size has changed
+ */
 $(function(){
 var whdef = 100/1920;
 var wH = window.innerHeight;
